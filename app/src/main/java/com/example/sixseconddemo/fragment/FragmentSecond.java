@@ -21,6 +21,7 @@ public class FragmentSecond extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = View.inflate(getActivity(), R.layout.fragsecond,null);
         Toast.makeText(getActivity(),"qianqian",Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(),"倩倩真美",Toast.LENGTH_SHORT).show();
         return view;
     }
 }
