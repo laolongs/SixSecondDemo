@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
                 .setFontSize(8)
                 .setTabPadding(4,6,10)
                 .setChangeColor(Color.RED,Color.DKGRAY)
-                .addTabItem("主页",R.drawable.rgclick1, FragmentFirst.class)
+                .addTabItem("主页1",R.drawable.rgclick1, FragmentFirst.class)
                 .addTabItem("热卖",R.drawable.rgclick2, FragmentSecond.class)
                 .addTabItem("分类",R.drawable.rgclick3, FragmentThird.class)
                 .addTabItem("购物车",R.drawable.rgclick4, FragmentFouth.class)
@@ -45,5 +45,6 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 });
+
     }
 }
