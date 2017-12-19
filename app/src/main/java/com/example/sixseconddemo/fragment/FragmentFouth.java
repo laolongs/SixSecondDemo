@@ -21,4 +21,5 @@ public class FragmentFouth extends Fragment {
         view = View.inflate(getActivity(), R.layout.fragfouth,null);
         return view;
     }
+
 }
