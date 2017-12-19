@@ -22,7 +22,7 @@ public class FragmentFirst extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = View.inflate(getActivity(), R.layout.fragfirst,null);
-        Toast.makeText(getActivity(),"aaaa",Toast.LENGTH_LONG);
+        Toast.makeText(getActivity(),"aaaa",Toast.LENGTH_LONG).show();
         return view;
     }
 }
