@@ -1,32 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="90dp"
     android:id="@+id/rlmine"
-    android:background="#f00">
-    <!--<com.facebook.drawee.view.SimpleDraweeView-->
-        <!--android:layout_width="45dp"-->
-        <!--android:layout_height="45dp"-->
-        <!--android:id="@+id/sdvtou"-->
-        <!--android:layout_centerInParent="true"-->
-        <!--/>-->
+    android:background="#ef4136">
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/sdvtou"
+        fresco:roundAsCircle="true"
+        android:layout_centerInParent="true"
+        />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tvtou"
         android:textColor="#ffffff"
         android:text="点击登录"
+        android:layout_below="@+id/sdvtou"
         android:layout_marginTop="5dp"
         android:layout_centerInParent="true"
-        android:textSize="12sp"/>
+        android:textSize="10sp"/>
 </RelativeLayout>
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:id="@+id/rvmine"
         android:layout_below="@+id/rlmine"
         android:layout_marginTop="5dp">
@@ -35,8 +38,10 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#f00"
+        android:background="#ef4136"
+        android:id="@+id/rlbackfifth"
         android:layout_marginTop="5dp"
+        android:visibility="gone"
         android:layout_below="@+id/rvmine">
         <TextView
             android:layout_width="match_parent"
