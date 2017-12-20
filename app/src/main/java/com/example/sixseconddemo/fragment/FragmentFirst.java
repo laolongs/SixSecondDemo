@@ -1,9 +1,10 @@
 package com.example.sixseconddemo.fragment;
 
-import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +13,8 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.example.sixseconddemo.R;
-import com.example.sixseconddemo.bean.LunboBean;
+import com.example.sixseconddemo.adapter.MyShowAdaoer;
+import com.example.sixseconddemo.bean.ShouyeBean;
 import com.example.sixseconddemo.presenter.FirstPresenter;
 import com.example.sixseconddemo.view.IFifstView;
 import com.stx.xhb.xbanner.XBanner;
@@ -33,11 +35,13 @@ import butterknife.Unbinder;
 public class FragmentFirst extends Fragment implements IFifstView, XBanner.XBannerAdapter {
 
     //使用依赖注入实现
-    @BindView(R.id.editText)
-    EditText editText;
     @BindView(R.id.xBanner)
     XBanner xBanner;
     Unbinder unbinder;
+    @BindView(R.id.editText)
+    EditText editText;
+    @BindView(R.id.rv)
+    RecyclerView rv;
     private View view;
     private FirstPresenter presenter;
     private List<String> imgesUrl;
@@ -49,16 +53,19 @@ public class FragmentFirst extends Fragment implements IFifstView, XBanner.XBann
         view = View.inflate(getActivity(), R.layout.fragfirst, null);
         unbinder = ButterKnife.bind(this, view);
         presenter = new FirstPresenter(this);
+        presenter.showRV();
         xBanner.setmAdapter(this);
-
+        rv.setLayoutManager(new LinearLayoutManager(getActivity()));
         //初始化XBanner轮播图
         initBanner();
         return view;
     }
+
     //自动生成View里面的方法
     @Override
-    public void setBanner(LunboBean lunboBean) {
-        presenter.showBanner(lunboBean.getId() + "");
+    public void setJiazai(ShouyeBean Bean) {
+        MyShowAdaoer adaoer = new MyShowAdaoer(getActivity(), (List<ShouyeBean>) Bean);
+        rv.setAdapter(adaoer);
     }
 
     @Override
@@ -66,8 +73,10 @@ public class FragmentFirst extends Fragment implements IFifstView, XBanner.XBann
         super.onDestroyView();
         unbinder.unbind();
     }
+
+    //放轮播数据的集合
     private void initBanner() {
-    //直接加图片的xbanner
+        //直接加图片的xbanner
         wenzi = new ArrayList<>();
         imgesUrl = new ArrayList<>();
         wenzi.add("音箱狂欢");
@@ -82,11 +91,16 @@ public class FragmentFirst extends Fragment implements IFifstView, XBanner.XBann
         imgesUrl.add("http://7mno4h.com2.z0.glb.qiniucdn.com/5608b7cdN218fb48f.jpg");
         imgesUrl.add("http://7mno4h.com2.z0.glb.qiniucdn.com/560b5a7eN214306c8.jpg");
         imgesUrl.add("http://7mno4h.com2.z0.glb.qiniucdn.com/560a409eN35e252de.jpg");
-        xBanner.setData(imgesUrl,wenzi);
-        xBanner.setPageTransformer(Transformer.Default);
+        xBanner.setData(imgesUrl, wenzi);
+        xBanner.setmAutoPalyTime(2000);
+        xBanner.setPageTransformer(Transformer.Rotate);    //立体旋转
+        xBanner.setPageChangeDuration(1500);
     }
+
     @Override
     public void loadBanner(XBanner banner, View view, int position) {
         Glide.with(getActivity()).load(imgesUrl.get(position)).into((ImageView) view);
     }
+
+
 }

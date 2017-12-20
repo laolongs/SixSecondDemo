@@ -10,5 +10,5 @@ import rx.Observer;
  */
 
 public interface IshouyeModel {
-    GetRequest_In LunboShuju();
+    GetRequest_In Shuju();
 }

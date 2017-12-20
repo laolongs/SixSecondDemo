@@ -17,7 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ShouyeModel implements IshouyeModel{
 
     @Override
-    public GetRequest_In LunboShuju() {
+    public GetRequest_In Shuju() {
 
         GetRequest_In request_in = RetrofitManager.getinstantce(Base.URL, new OkHttpClient()).setcreate(GetRequest_In.class);
         return  request_in;
