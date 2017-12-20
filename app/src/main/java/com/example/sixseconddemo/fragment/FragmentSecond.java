@@ -20,7 +20,7 @@ public class FragmentSecond extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = View.inflate(getActivity(), R.layout.fragsecond,null);
-        Toast.makeText(getActivity(),"aaa",Toast.LENGTH_LONG).show();
+jl();
         return view;
     }
 }
