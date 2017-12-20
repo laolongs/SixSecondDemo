@@ -10,8 +10,9 @@
         android:textColor="#fff"
         android:textColorHint="#fff"
         android:padding="5dp"
+        android:gravity="center"
         android:drawableLeft="@drawable/icon_search"
-        android:hint="                      请输入搜索内容"
+        android:hint="请输入搜索内容"
         android:id="@+id/editText" />
 
 
