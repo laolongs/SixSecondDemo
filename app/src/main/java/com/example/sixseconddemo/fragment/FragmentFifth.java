@@ -79,6 +79,7 @@ public class FragmentFifth extends Fragment {
         sdvtou.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(getActivity(), LoginActivity.class);
                 startActivity(intent);
 
