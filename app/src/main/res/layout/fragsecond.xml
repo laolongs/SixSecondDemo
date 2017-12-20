@@ -1,10 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<RelativeLayout
+    android:background="#ffffff"
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#f00"
+        android:textColor="#fff"
+        android:textColorHint="#fff"
+        android:padding="5dp"
+        android:gravity="center"
+        android:drawableLeft="@drawable/icon_search"
+        android:hint="请输入搜索内容"
+        android:id="@+id/editText" />
 
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="李倩倩真（）谁来补充下"/>
-</android.support.constraint.ConstraintLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/second_recy"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/editText">
+
+    </android.support.v7.widget.RecyclerView>
+
+
+</RelativeLayout>
