@@ -52,6 +52,7 @@ dependencies {
     implementation 'org.glassfish:javax.annotation:10.0-b28'
 //  主页导航栏
     implementation 'com.hjm:BottomTabBar:1.1.1'
+    implementation 'org.greenrobot:eventbus:3.1.1'
     compile 'com.xhb:xbanner:1.2.2'
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.nineoldandroids:library:2.4.0'
