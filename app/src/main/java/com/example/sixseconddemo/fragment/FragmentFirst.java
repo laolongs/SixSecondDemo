@@ -63,8 +63,8 @@ public class FragmentFirst extends Fragment implements IFifstView, XBanner.XBann
 
     //自动生成View里面的方法
     @Override
-    public void setJiazai(ShouyeBean Bean) {
-        MyShowAdaoer adaoer = new MyShowAdaoer(getActivity(), (List<ShouyeBean>) Bean);
+    public void setJiazai(List<ShouyeBean> Bean) {
+        MyShowAdaoer adaoer = new MyShowAdaoer(getActivity(), Bean);
         rv.setAdapter(adaoer);
     }
 

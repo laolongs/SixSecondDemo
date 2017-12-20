@@ -10,5 +10,5 @@ import java.util.List;
  */
 
 public interface IFifstView {
-    void setJiazai(ShouyeBean Bean);
+    void setJiazai(List<ShouyeBean> Bean);
 }

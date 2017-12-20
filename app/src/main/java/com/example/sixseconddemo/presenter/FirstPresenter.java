@@ -39,7 +39,7 @@ public class FirstPresenter implements IPresenter<IFifstView>{
 
            @Override
            public void onNext(List<ShouyeBean> shouyeBeans) {
-               reference.get().setJiazai((ShouyeBean) shouyeBeans);
+               reference.get().setJiazai(shouyeBeans);
 
            }
        });
