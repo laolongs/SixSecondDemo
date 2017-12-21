@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="horizontal"
-        android:background="#f0f"
+        android:background="#f00"
         android:gravity="center"
         android:id="@+id/searchedit_header">
         <ImageView
@@ -55,7 +55,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:orientation="horizontal"
-        android:background="#f0f"
+        android:background="#fff"
         android:layout_alignParentBottom="true"
         android:gravity="center"
         android:id="@+id/searchedit_foot">
@@ -64,7 +64,6 @@
             android:layout_height="wrap_content"
             android:text="全选"
             android:textSize="20sp"
-            android:textColor="#fff"
             android:id="@+id/fouth_foot_ck"
             android:layout_marginLeft="15dp"/>
         <TextView
