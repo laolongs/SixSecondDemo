@@ -2,22 +2,27 @@ package com.example.sixseconddemo.model;
 
 import com.example.sixseconddemo.api.BaseUrl;
 import com.example.sixseconddemo.api.HomeApi;
+import com.example.sixseconddemo.utils.MyInterceptor;
 import com.example.sixseconddemo.utils.RetrofitManager;
 
 import okhttp3.OkHttpClient;
 
 /**
- * Created by 李倩 on 2017/12/20.
+ * 作者：author
+ * 时间 ：2017/12/21:15:21
+ * 说明：
  */
 
-public class FenleiLefModel implements IFenleiLeftModel {
+public class LoginModel implements ILoginModel {
+
     @Override
-    public HomeApi getfenlei() {
+    public HomeApi getlogin() {
         OkHttpClient client=new OkHttpClient.Builder()
+                .addNetworkInterceptor(new MyInterceptor())
                 .build();
-        HomeApi setcreate = RetrofitManager.getinstantce(BaseUrl.Baseurl, client)
+        HomeApi user= RetrofitManager.getinstantce(BaseUrl.Baseurl,client)
                 .setcreate(HomeApi.class);
-        return setcreate;
+        return user;
     }
 
 

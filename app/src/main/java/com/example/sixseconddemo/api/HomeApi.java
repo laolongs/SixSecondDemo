@@ -1,11 +1,15 @@
 package com.example.sixseconddemo.api;
 
 import com.example.sixseconddemo.bean.BestSellerBean;
+import com.example.sixseconddemo.bean.FenLeiRight;
 import com.example.sixseconddemo.bean.FenleiLeft;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import okhttp3.ResponseBody;
+import retrofit2.Call;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
@@ -23,4 +27,13 @@ public interface HomeApi {
     //分类
     @POST("course_api/category/list")
     Observable<List<FenleiLeft>> getleft();
+
+    @FormUrlEncoded
+    @POST("course_api/auth/login")
+    Call<ResponseBody> getMap(@FieldMap Map<String,String> map);
+
+
+    @FormUrlEncoded
+    @POST("course_api/wares/list?")
+    Observable<FenLeiRight> getright(@FieldMap HashMap<String,Integer> map);
 }

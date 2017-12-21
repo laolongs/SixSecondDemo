@@ -1,5 +1,6 @@
 package com.example.sixseconddemo.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,6 +14,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.example.sixseconddemo.R;
+import com.example.sixseconddemo.activity.SousuoActivity;
 import com.example.sixseconddemo.adapter.MyShowAdaoer;
 import com.example.sixseconddemo.bean.ShouyeBean;
 import com.example.sixseconddemo.presenter.FirstPresenter;
@@ -58,6 +60,12 @@ public class FragmentFirst extends Fragment implements IFifstView, XBanner.XBann
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
         //初始化XBanner轮播图
         initBanner();
+        editText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(),SousuoActivity.class));
+            }
+        });
         return view;
     }
 

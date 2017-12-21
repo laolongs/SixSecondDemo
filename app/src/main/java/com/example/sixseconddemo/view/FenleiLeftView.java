@@ -11,5 +11,5 @@ import java.util.List;
 
 public interface FenleiLeftView {
     public void showFeiLeft(List<FenleiLeft> flist);
-    public void showFeiRight(List<FenLeiRight> rlist);
+    public void showFeiRight(FenLeiRight rlist);
 }
