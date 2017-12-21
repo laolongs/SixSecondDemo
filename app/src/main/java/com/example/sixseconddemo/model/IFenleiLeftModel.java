@@ -8,4 +8,5 @@ import com.example.sixseconddemo.api.HomeApi;
 
 public interface IFenleiLeftModel {
     public HomeApi getfenlei();
+
 }

@@ -1,6 +1,7 @@
 package com.example.sixseconddemo.api;
 
 import com.example.sixseconddemo.bean.BestSellerBean;
+import com.example.sixseconddemo.bean.FenLeiRight;
 import com.example.sixseconddemo.bean.FenleiLeft;
 
 import java.util.HashMap;
@@ -26,7 +27,13 @@ public interface HomeApi {
     //分类
     @POST("course_api/category/list")
     Observable<List<FenleiLeft>> getleft();
+
     @FormUrlEncoded
     @POST("course_api/auth/login")
     Call<ResponseBody> getMap(@FieldMap Map<String,String> map);
+
+
+    @FormUrlEncoded
+    @POST("course_api/wares/list?")
+    Observable<FenLeiRight> getright(@FieldMap HashMap<String,Integer> map);
 }

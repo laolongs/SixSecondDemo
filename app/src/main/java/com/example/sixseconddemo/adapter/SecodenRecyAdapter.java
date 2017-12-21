@@ -1,5 +1,6 @@
 package com.example.sixseconddemo.adapter;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
@@ -7,9 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.sixseconddemo.R;
 import com.example.sixseconddemo.bean.BestSellerBean;
+import com.example.sixseconddemo.dao.CarDao;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -23,10 +26,11 @@ import java.util.List;
 public class SecodenRecyAdapter extends RecyclerView.Adapter<SecodenRecyAdapter.ViewHolder>{
     Context context;
     List<BestSellerBean.ListBean> slist;
-
+    CarDao dao;
     public SecodenRecyAdapter(Context context, List<BestSellerBean.ListBean> slist) {
         this.context = context;
         this.slist = slist;
+        dao=new CarDao(context);
     }
     @Override
     public SecodenRecyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -36,14 +40,24 @@ public class SecodenRecyAdapter extends RecyclerView.Adapter<SecodenRecyAdapter.
     }
 
     @Override
-    public void onBindViewHolder(SecodenRecyAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(final SecodenRecyAdapter.ViewHolder holder, final int position) {
         holder.tv_title.setText(slist.get(position).getName());
         holder.tv_price.setText("￥"+slist.get(position).getPrice());
         DraweeController controller= Fresco.newDraweeControllerBuilder()
                 .setUri(Uri.parse(slist.get(position).getImgUrl()))
                 .build();
         holder.sim.setController(controller);
-
+        holder.btn_gm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ContentValues values=new ContentValues();
+                values.put("title", holder.tv_title.getText().toString());
+                values.put("img",slist.get(position).getImgUrl());
+                values.put("price",holder.tv_price.getText().toString());
+                dao.insert(values);
+                Toast.makeText(context,"加入购物车成功",Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 

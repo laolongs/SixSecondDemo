@@ -19,4 +19,6 @@ public class FenleiLefModel implements IFenleiLeftModel {
                 .setcreate(HomeApi.class);
         return setcreate;
     }
+
+
 }
