@@ -21,6 +21,10 @@ public class Lv_RT_adapter extends XRecyclerView.Adapter<Lv_RT_adapter.ViewHolde
     Context mContext;
     FenLeiRight list;
 
+    OnItemClickListener listener;
+    public void  setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
     public Lv_RT_adapter(Context mContext, FenLeiRight list) {
         this.mContext=mContext;
         this.list=list;
@@ -30,6 +34,14 @@ public class Lv_RT_adapter extends XRecyclerView.Adapter<Lv_RT_adapter.ViewHolde
     public Lv_RT_adapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view=View.inflate(mContext, R.layout.right_item,null);
         ViewHolder holder=new ViewHolder(view);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (listener!=null){
+                    listener.onItemClick((Integer) view.getTag());
+                }
+            }
+        });
         return holder;
     }
 
@@ -39,8 +51,10 @@ public class Lv_RT_adapter extends XRecyclerView.Adapter<Lv_RT_adapter.ViewHolde
         holder.tv_jprice.setText("￥"+list.getList().get(position).getPrice());
         DraweeController controller= Fresco.newDraweeControllerBuilder()
                 .setUri(Uri.parse(list.getList().get(position).getImgUrl()))
+                .setAutoPlayAnimations(true)
                 .build();
         holder.dsim.setController(controller);
+        holder.itemView.setTag(position);
 
     }
 
@@ -61,4 +75,9 @@ public class Lv_RT_adapter extends XRecyclerView.Adapter<Lv_RT_adapter.ViewHolde
 
         }
     }
+
+    public  interface  OnItemClickListener{
+        public  void onItemClick(int position);
+    }
+
 }

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:background="#ffffff"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.sixseconddemo.activity.XQActivity">
+  <com.facebook.drawee.view.SimpleDraweeView
+      android:layout_marginTop="20dp"
+      android:id="@+id/simD"
+      android:layout_width="500dp"
+      android:layout_centerHorizontal="true"
+      android:layout_height="500dp" />
+
+    <TextView
+        android:id="@+id/xq_tv_title"
+        android:layout_below="@+id/simD"
+        android:layout_width="500dp"
+        android:textSize="20sp"
+        android:layout_centerInParent="true"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="xxx"/>
+    <TextView
+        android:layout_below="@+id/xq_tv_title"
+        android:id="@+id/xq_tv_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_alignParentRight="true"
+        android:textSize="20sp"
+        android:textColor="#ff00"
+        android:text="xxx"/>
+    <RelativeLayout
+        android:background="#ddd"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="60dp">
+
+        <Button
+            android:id="@+id/xq_btn_car"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/xq_btn_gm"
+            android:layout_alignBottom="@+id/xq_btn_gm"
+            android:layout_marginEnd="18dp"
+            android:layout_toStartOf="@+id/xq_btn_gm"
+            android:background="#f00"
+            android:text="加入购物车"
+            android:textColor="#ffff" />
+
+        <Button
+            android:id="@+id/xq_btn_gm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="24dp"
+            android:background="#f00"
+            android:text="立即购买"
+            android:textColor="#ffff" />
+    </RelativeLayout>
+
+</RelativeLayout>
