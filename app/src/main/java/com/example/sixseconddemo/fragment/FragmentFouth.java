@@ -3,6 +3,7 @@ package com.example.sixseconddemo.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import com.example.sixseconddemo.R;
 import com.example.sixseconddemo.adapter.CarAdatper;
 import com.example.sixseconddemo.bean.EventCheck;
+import com.example.sixseconddemo.bean.EventPass;
 import com.example.sixseconddemo.bean.EventPriceAndNum;
 
 import org.greenrobot.eventbus.EventBus;
@@ -81,22 +83,19 @@ public class FragmentFouth extends Fragment {
             @Override
             public void onClick(View v) {
                 adatper.changAllListCbState(fouthFootCk.isChecked());
+                adatper.notifyDataSetChanged();
             }
         });
         fouthFootJs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String name = fouthFootJs.getText().toString();
                 if(name.equals("去结算")){
 
                 }
                 if(name.equals("删除")){
-                    adatper.setOnClick(new CarAdatper.OnClick() {
-                        @Override
-                        public void OnClickListenre(int position) {
-                            adatper.delete(position);
-                        }
-                    });
+                            adatper.delete();
                 }
             }
         });
@@ -105,6 +104,7 @@ public class FragmentFouth extends Fragment {
     private void initData() {
         adatper=new CarAdatper(getActivity());
         fouthRecy.setLayoutManager(new LinearLayoutManager(getActivity()));
+        fouthRecy.addItemDecoration(new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL));
         fouthRecy.setAdapter(adatper);
         adatper.getData();
         adatper.notifyDataSetChanged();
@@ -125,10 +125,18 @@ public class FragmentFouth extends Fragment {
     public void EventBusData(EventPriceAndNum priceAndNum) {
         fouthFootHj.setText("合计：￥"+priceAndNum.getPrice());
     }
+    @Subscribe
+    public void EventBusData(EventPass pass) {
+       if(pass.isChecked()){
+           adatper.getData();
+           adatper.notifyDataSetChanged();
+       }
+    }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
     }
+
 }

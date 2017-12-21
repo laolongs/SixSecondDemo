@@ -76,9 +76,8 @@
             android:textColorHint="#eee"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:text="合计"
-            android:textSize="25sp"
-            android:textColor="#fff"
+            android:text="合计:￥0"
+            android:textSize="20sp"
             android:id="@+id/fouth_foot_hj"
             />
         <TextView
