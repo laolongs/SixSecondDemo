@@ -1,5 +1,6 @@
 package com.example.sixseconddemo.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
@@ -14,6 +15,7 @@ import android.widget.ListView;
 import com.bumptech.glide.Glide;
 import com.example.sixseconddemo.R;
 import com.example.sixseconddemo.activity.BaseFragment;
+import com.example.sixseconddemo.activity.XQActivity;
 import com.example.sixseconddemo.adapter.LeftAdapter;
 import com.example.sixseconddemo.adapter.Lv_RT_adapter;
 import com.example.sixseconddemo.bean.FenLeiRight;
@@ -46,6 +48,7 @@ public class FragmentThird extends BaseFragment<FenleiLefPresenter> implements F
     private List<String> wenzi;
     private XBanner mXBanner;
     XRecyclerView xRecyclerView;
+    Lv_RT_adapter adapter;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -56,6 +59,7 @@ public class FragmentThird extends BaseFragment<FenleiLefPresenter> implements F
         xRecyclerView=view.findViewById(R.id.xrecyclerview);
         mXBanner.setmAdapter(this);
         presenter.getShowLeft();
+        presenter.showright(1);
         return view;
     }
     //放轮播数据的集合
@@ -107,12 +111,22 @@ public class FragmentThird extends BaseFragment<FenleiLefPresenter> implements F
     }
 
     @Override
-    public void showFeiRight(FenLeiRight rlist) {
+    public void showFeiRight(final FenLeiRight rlist) {
         Log.i("-------------", "showFeiRight: "+rlist);
         GridLayoutManager mar=new GridLayoutManager(getActivity(),2);
         xRecyclerView.setLayoutManager(mar);
-        Lv_RT_adapter adapter=new Lv_RT_adapter(getActivity(),rlist);
+        adapter=new Lv_RT_adapter(getActivity(),rlist);
         xRecyclerView.setAdapter(adapter);
+        adapter.setOnItemClickListener(new Lv_RT_adapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                Intent intent=new Intent(getActivity(), XQActivity.class);
+                intent.putExtra("title",rlist.getList().get(position).getName());
+                intent.putExtra("price",rlist.getList().get(position).getPrice());
+                intent.putExtra("img",rlist.getList().get(position).getImgUrl());
+                startActivity(intent);
+            }
+        });
        
 
 
