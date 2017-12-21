@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#fff"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <ImageView
+            android:id="@+id/jt1"
+            android:layout_width="40dp"
+            android:layout_height="59dp"
+            android:src="@drawable/fh"
+            android:textSize="30dp"
+            android:layout_marginLeft="10dp"/>
+
+        <EditText
+            android:id="@+id/editText_ss"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawableRight="@mipmap/xjjj" />
+        <ImageView
+            android:id="@+id/ss_ss"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/s1s"
+            android:layout_weight="0.25" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="   历史搜索"
+        android:layout_marginTop="10dp"
+        android:textColor="#000"
+        android:textSize="15dp"
+        android:textStyle="italic"
+        />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:textSize="10dp"
+            android:layout_marginLeft="20dp"
+            android:text="劳力士"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/lisisousuo"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:textSize="10dp"
+            android:layout_marginLeft="20dp"
+            android:text="男童打底裤加绒"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/lisisousuo"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:textSize="10dp"
+            android:layout_marginLeft="20dp"
+            android:text="大裤衩子"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/lisisousuo"/>
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="   搜索发现"
+        android:layout_marginTop="10dp"
+        android:textColor="#000"
+        android:textSize="15dp"
+        android:textStyle="italic"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:textSize="10dp"
+        android:layout_marginLeft="20dp"
+        android:text="男童打底裤加绒"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/lisisousuo"/>
+
+</LinearLayout>

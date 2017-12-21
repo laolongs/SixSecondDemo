@@ -2,17 +2,19 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFF"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:custom="http://schemas.android.com/tools">
     <EditText
+        android:background="@drawable/yuan"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#f00"
         android:textColor="#fff"
         android:textColorHint="#fff"
         android:padding="5dp"
         android:gravity="center"
         android:editable="false"
+
         android:drawableLeft="@drawable/icon_search"
         android:hint="请输入搜索内容"
         android:id="@+id/editText" />
