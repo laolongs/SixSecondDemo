@@ -30,6 +30,8 @@
         <activity android:name=".activity.SousuoXiangqingActivity" />
         <activity android:name=".activity.XiangqingActivity"></activity>
         <activity android:name=".activity.XQActivity"></activity>
+
+
     </application>
 
 </manifest>

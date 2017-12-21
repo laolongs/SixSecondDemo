@@ -1,12 +1,10 @@
 package com.example.sixseconddemo.api;
 
-import com.example.sixseconddemo.bean.LunboBean;
 import com.example.sixseconddemo.bean.ShouyeBean;
 
 import java.util.List;
 
 import retrofit2.http.GET;
-import retrofit2.http.Query;
 import rx.Observable;
 
 /**
@@ -16,4 +14,5 @@ import rx.Observable;
 public interface GetRequest_In {
     @GET("campaign/recommend")
     Observable<List<ShouyeBean>> getJiazai();
+
 }
