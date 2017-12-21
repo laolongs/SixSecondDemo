@@ -12,10 +12,14 @@ import android.widget.Toast;
 
 import com.example.sixseconddemo.R;
 import com.example.sixseconddemo.bean.BestSellerBean;
+
+import com.example.sixseconddemo.bean.EventPass;
 import com.example.sixseconddemo.dao.CarDao;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
@@ -51,6 +55,15 @@ public class SecodenRecyAdapter extends RecyclerView.Adapter<SecodenRecyAdapter.
             @Override
             public void onClick(View v) {
                 ContentValues values=new ContentValues();
+                values.put("title", slist.get(position).getName());
+                values.put("img",slist.get(position).getImgUrl());
+                values.put("price",slist.get(position).getPrice());
+                dao.insert(values);
+                Toast.makeText(context,"加入购物车成功",Toast.LENGTH_SHORT).show();
+                EventPass pass=new EventPass();
+                pass.setChecked(true);
+                EventBus.getDefault().post(pass);
+
                 values.put("title", holder.tv_title.getText().toString());
                 values.put("img",slist.get(position).getImgUrl());
                 values.put("price",holder.tv_price.getText().toString());

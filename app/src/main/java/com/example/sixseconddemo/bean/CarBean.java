@@ -9,7 +9,7 @@ public class CarBean {
     String img;
     String price;
     boolean checked;
-    int num=0;
+    int num=1;
 
     public boolean isChecked() {
         return checked;

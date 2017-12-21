@@ -52,9 +52,4 @@ public class FragmentSecond extends BaseFragment<SecondPresenter>implements Seco
         SecodenRecyAdapter adapter=new SecodenRecyAdapter(getActivity(),slist);
         second_recy.setAdapter(adapter);
     }
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
-    }
 }
