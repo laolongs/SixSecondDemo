@@ -145,6 +145,7 @@ public class CarAdatper extends RecyclerView.Adapter<CarAdatper.ViewHolder> {
     //删除的方法
     public void delete(int posrtion){
         list.remove(posrtion);
+        dao.delete(list.get(posrtion).getTitle());
         EventBus.getDefault().post(compute());
         notifyDataSetChanged();
     }
