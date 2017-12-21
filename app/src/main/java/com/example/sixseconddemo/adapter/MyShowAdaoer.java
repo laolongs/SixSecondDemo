@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.sixseconddemo.R;
-import com.example.sixseconddemo.activity.XiangqingActivity;
+import com.example.sixseconddemo.activity.XQActivity;
 import com.example.sixseconddemo.bean.ShouyeBean;
 
 import java.util.List;
@@ -68,7 +68,7 @@ public class MyShowAdaoer extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                     ObjectAnimator animator =  ObjectAnimator.ofFloat(v, "rotationX", 0.0F, 360.0F)
                             .setDuration(200);
                     animator.start();
-                    context.startActivity(new Intent(context,XiangqingActivity.class));
+                    context.startActivity(new Intent(context, XQActivity.class));
                 }
             });
             myViewHolder.item1_youimage.setOnClickListener(new View.OnClickListener() {
@@ -78,7 +78,7 @@ public class MyShowAdaoer extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                             .setDuration(200);
                     animator.start();
 
-                    context.startActivity(new Intent(context,XiangqingActivity.class));
+                    context.startActivity(new Intent(context,XQActivity.class));
                 }
             });
             myViewHolder.item1_youimage2.setOnClickListener(new View.OnClickListener() {
@@ -88,7 +88,7 @@ public class MyShowAdaoer extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                             .setDuration(200);
                     animator.start();
 
-                    context.startActivity(new Intent(context,XiangqingActivity.class));
+                    context.startActivity(new Intent(context,XQActivity.class));
                 }
             });
 
@@ -105,7 +105,7 @@ public class MyShowAdaoer extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                             .setDuration(200);
                     animator.start();
 
-                    context.startActivity(new Intent(context,XiangqingActivity.class));
+                    context.startActivity(new Intent(context,XQActivity.class));
                 }
             });
             myViewHolder.item2_zuoimage2.setOnClickListener(new View.OnClickListener() {
@@ -115,7 +115,7 @@ public class MyShowAdaoer extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                             .setDuration(200);
                     animator.start();
 
-                    context.startActivity(new Intent(context,XiangqingActivity.class));
+                    context.startActivity(new Intent(context,XQActivity.class));
                 }
             });
             myViewHolder.item2_youimage.setOnClickListener(new View.OnClickListener() {
@@ -125,7 +125,7 @@ public class MyShowAdaoer extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
                             .setDuration(200);
                     animator.start();
 
-                    context.startActivity(new Intent(context,XiangqingActivity.class));
+                    context.startActivity(new Intent(context,XQActivity.class));
                 }
             });
 

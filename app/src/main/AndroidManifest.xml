@@ -28,7 +28,6 @@
             android:theme="@style/Translucent" />
         <activity android:name=".activity.SousuoActivity" />
         <activity android:name=".activity.SousuoXiangqingActivity" />
-        <activity android:name=".activity.XiangqingActivity"></activity>
     </application>
 
 </manifest>
