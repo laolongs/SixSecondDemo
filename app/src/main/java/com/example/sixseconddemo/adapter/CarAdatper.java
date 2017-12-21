@@ -2,6 +2,7 @@ package com.example.sixseconddemo.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
@@ -62,17 +63,18 @@ public class CarAdatper extends RecyclerView.Adapter<CarAdatper.ViewHolder> {
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.itemView.setTag(position);
         final CarBean bean = list.get(position);
+        holder.carCb.setChecked(bean.isChecked());
         holder.carTitle.setText(bean.getTitle());
         DraweeController build = Fresco.newDraweeControllerBuilder().setUri(bean.getImg()).build();
         holder.carSd.setController(build);
-        holder.carPrice.setText(bean.getPrice());
+        holder.carPrice.setText("￥"+bean.getPrice());
         holder.carCb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 bean.setChecked(holder.carCb.isChecked());
                 EventPriceAndNum compute = compute();
                 EventBus.getDefault().post(compute);
-                if(ischeckitemAll(position)){
+                if(ischeckitemAll()){
                     CheckALLstate(true);
                 }else{
                     CheckALLstate(false);
@@ -115,6 +117,7 @@ public class CarAdatper extends RecyclerView.Adapter<CarAdatper.ViewHolder> {
 
     @Override
     public int getItemCount() {
+        Log.i("-----list-------", "getItemCount: "+list.size());
         return list == null ? 0 : list.size();
     }
 
@@ -143,9 +146,15 @@ public class CarAdatper extends RecyclerView.Adapter<CarAdatper.ViewHolder> {
         void OnClickListenre(int position);
     }
     //删除的方法
-    public void delete(int posrtion){
-        list.remove(posrtion);
-        dao.delete(list.get(posrtion).getTitle());
+    public void delete(){
+        for (int i = 0; i < list.size(); i++) {
+            CarBean bean = list.get(i);
+            if(bean.isChecked()){
+                list.remove(i);
+                dao.delete(bean.getTitle());
+            }
+        }
+        Log.i("----list.size--", "delete: "+list.size()+"----"+dao.queryAll().size());
         EventBus.getDefault().post(compute());
         notifyDataSetChanged();
     }
@@ -154,6 +163,7 @@ public class CarAdatper extends RecyclerView.Adapter<CarAdatper.ViewHolder> {
         for (int i = 0; i < list.size(); i++) {
             CarBean bean = list.get(i);
             bean.setChecked(flag);
+            Log.i("----全选-------", "changAllListCbState: "+flag);
         }
         EventPriceAndNum compute = compute();
         EventBus.getDefault().post(compute);
@@ -166,25 +176,28 @@ public class CarAdatper extends RecyclerView.Adapter<CarAdatper.ViewHolder> {
         EventBus.getDefault().post(check);
     }
     //判断所有条目是否全部选中
-    public boolean ischeckitemAll(int position){
-        CarBean bean = list.get(position);
-        if(!bean.isChecked()){
-            return false;
+    public boolean ischeckitemAll( ){
+        for (int i = 0; i < list.size(); i++) {
+            CarBean bean = list.get(i);
+            if(!bean.isChecked()){
+                return false;
+            }
         }
         return true;
     }
     //计算选中的条目
     public EventPriceAndNum compute(){
        int price=0;
-       int num=0;
+       int num=1;
         for (int i = 0; i < list.size(); i++) {
             CarBean bean = list.get(i);
             if(bean.isChecked()){
                 num+=bean.getNum();
-                price+=bean.getNum()*Integer.parseInt(bean.getPrice());
+                price+=bean.getNum()*Double.parseDouble(bean.getPrice());
             }
         }
         EventPriceAndNum priceAndNum=new EventPriceAndNum();
+        Log.i("-----price------", "compute: "+price);
         priceAndNum.setNum(num);
         priceAndNum.setPrice(price);
         return priceAndNum;

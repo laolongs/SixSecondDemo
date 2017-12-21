@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="150dp"
-    android:background="@android:color/darker_gray"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:background="#fff"
     android:gravity="center_vertical"
     android:orientation="horizontal">
     <CheckBox
@@ -10,14 +11,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_marginTop="30dp"
         android:focusable="false" />
 
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/car_sd"
         android:layout_width="150dp"
-        android:layout_height="150dp" />
+        android:layout_height="150dp"
+        fresco:roundedCornerRadius="10dp"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -26,17 +29,21 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="vertical"
-            android:layout_height="100dp">
+            android:layout_height="120dp">
             <TextView
                 android:gravity="center"
                 android:id="@+id/car_title"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:text="¥3000.00" />
+                android:layout_height="100dp"
+                android:textSize="18sp"
+                android:textColor="#000"
+                android:text="描述" />
             <TextView
                 android:id="@+id/car_price"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:textColor="#f00"
+                android:layout_marginLeft="30dp"
+                android:layout_height="20dp"
                 android:text="¥3000.00" />
         </LinearLayout>
         <LinearLayout

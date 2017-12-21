@@ -28,7 +28,7 @@ public class CarDao {
     }
     public void delete(String title){
         SQLiteDatabase db = helper.getWritableDatabase();
-        db.delete(TABLE,title,new String[]{title});
+        db.delete(TABLE,"title=?",new String[]{title});
         db.close();
     }
     public List<CarBean> queryAll(){
