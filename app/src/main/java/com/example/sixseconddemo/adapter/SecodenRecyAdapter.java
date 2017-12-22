@@ -64,11 +64,7 @@ public class SecodenRecyAdapter extends RecyclerView.Adapter<SecodenRecyAdapter.
                 pass.setChecked(true);
                 EventBus.getDefault().post(pass);
 
-                values.put("title", holder.tv_title.getText().toString());
-                values.put("img",slist.get(position).getImgUrl());
-                values.put("price",holder.tv_price.getText().toString());
-                dao.insert(values);
-                Toast.makeText(context,"加入购物车成功",Toast.LENGTH_SHORT).show();
+        
             }
         });
 
