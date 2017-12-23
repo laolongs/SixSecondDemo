@@ -6,27 +6,36 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.transition.Transition;
 import android.transition.TransitionInflater;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.animation.AccelerateInterpolator;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.sixseconddemo.R;
+import com.example.sixseconddemo.presenter.regpresenter;
+import com.example.sixseconddemo.view.IRegView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class RegisterActivity extends AppCompatActivity {
-
-
+public class RegisterActivity extends BaseActivity<regpresenter> implements IRegView {
     @BindView(R.id.cv_add)
     CardView cvAdd;
     @BindView(R.id.fab)
     FloatingActionButton fab;
+    @BindView(R.id.et_username)
+    EditText etUsername;
+    @BindView(R.id.et_password)
+    EditText etPassword;
+    @BindView(R.id.et_repeatpassword)
+    EditText etRepeatpassword;
+    @BindView(R.id.bt_go)
+    Button btGo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +54,17 @@ public class RegisterActivity extends AppCompatActivity {
                 animateRevealClose();
             }
         });
+        btGo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                presenter.getreg();
+            }
+        });
+    }
+
+    @Override
+    public void createPresenter() {
+        presenter=new regpresenter(this,this);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -130,5 +150,25 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         animateRevealClose();
+    }
+
+    @Override
+    public void setName(String name) {
+
+    }
+
+    @Override
+    public String getName() {
+        return etUsername.getText().toString();
+    }
+
+    @Override
+    public void setPass(String pass) {
+
+    }
+
+    @Override
+    public String getPass() {
+        return etPassword.getText().toString();
     }
 }
