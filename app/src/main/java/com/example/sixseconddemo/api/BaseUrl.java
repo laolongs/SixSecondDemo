@@ -5,6 +5,8 @@ package com.example.sixseconddemo.api;
  */
 
 public class BaseUrl {
+    public  static final String DES_KEY="Cniao5_123456";
     public static final String Baseurl= "http://112.124.22.238:8081/";
+
 
 }

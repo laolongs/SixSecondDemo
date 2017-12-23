@@ -17,6 +17,7 @@ import android.widget.EditText;
 
 import com.example.sixseconddemo.MainActivity;
 import com.example.sixseconddemo.R;
+import com.example.sixseconddemo.api.BaseUrl;
 import com.example.sixseconddemo.presenter.loginpresenter;
 import com.example.sixseconddemo.view.ILoginview;
 
@@ -33,7 +34,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class LoginActivity extends BaseActivity<loginpresenter> implements ILoginview {
-    private final static String HEX = "ZXG1134504342";
+    private final static String HEX = "ZXJ1134504342";
     private final static String TRANSFORMATION = "DES/CBC/PKCS5Padding";//DES是加密方式 CBC是工作模式 PKCS5Padding是填充模式
     private final static String IVPARAMETERSPEC = "01020304";////初始化向量参数，AES 为16bytes. DES 为8bytes.
     private final static String ALGORITHM = "DES";//DES是加密方式
@@ -41,7 +42,7 @@ public class LoginActivity extends BaseActivity<loginpresenter> implements ILogi
     public static final String ALGORITHM_DES = "DES/CBC/PKCS5Padding";
     loginpresenter log;
     String name="13522933723";
-    String pw="cBGFQddcbI6hcev9hj9P6A==";
+    String pw="D1hNKAFsuUSeslITy0LxOQ==";
     @BindView(R.id.et_username)
     EditText etUsername;
     @BindView(R.id.et_password)
@@ -59,12 +60,12 @@ public class LoginActivity extends BaseActivity<loginpresenter> implements ILogi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-        //13522933723   ZXG1134504342   cBGFQddcbI6hcev9hj9P6A==
+        //13522933723   ZXJ1134504342  D1hNKAFsuUSeslITy0LxOQ==
         try {
-            String encode = encode("12355678", HEX);
-            Log.i("--------", "onCreate: "+encode);
-            String decode = decode("12355678", encode);
-            Log.i("--------", "onCreate: "+decode);
+            String encode = encode(BaseUrl.DES_KEY, HEX);
+            Log.i("encode****", "onCreate: "+encode);
+            String decode = decode(BaseUrl.DES_KEY, encode);
+            Log.i("decode****", "onCreate: "+decode);
         } catch (Exception e) {
             e.printStackTrace();
         }
