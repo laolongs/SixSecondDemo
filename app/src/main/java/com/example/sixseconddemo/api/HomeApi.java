@@ -3,6 +3,7 @@ package com.example.sixseconddemo.api;
 import com.example.sixseconddemo.bean.BestSellerBean;
 import com.example.sixseconddemo.bean.FenLeiRight;
 import com.example.sixseconddemo.bean.FenleiLeft;
+import com.example.sixseconddemo.bean.RegBean;
 import com.example.sixseconddemo.bean.User;
 import com.example.sixseconddemo.msg.LoginRespMsg;
 
@@ -28,9 +29,12 @@ public interface HomeApi {
     @POST("course_api/category/list")
     Observable<List<FenleiLeft>> getleft();
 
-    @FormUrlEncoded
     @POST("course_api/auth/login")
-    Observable<LoginRespMsg<User>> getMap(@FieldMap Map<String,String> map);
+    @FormUrlEncoded
+    Observable<LoginRespMsg<User>> getlogMap(@FieldMap Map<String,String> map);
+    @FormUrlEncoded
+    @POST("user/reg")
+    Observable<RegBean> getregMap(@FieldMap Map<String,String> map);
 
 
     @FormUrlEncoded
