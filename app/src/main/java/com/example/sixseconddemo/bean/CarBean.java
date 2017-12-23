@@ -10,6 +10,18 @@ public class CarBean {
     String price;
     boolean checked;
     int num=1;
+     boolean state;
+    public CarBean(boolean state) {
+        this.state = state;
+    }
+
+    public boolean isState() {
+        return state;
+    }
+
+    public void setState(boolean state) {
+        this.state = state;
+    }
 
     public boolean isChecked() {
         return checked;
