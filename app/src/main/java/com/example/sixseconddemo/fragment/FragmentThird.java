@@ -121,6 +121,7 @@ public class FragmentThird extends BaseFragment<FenleiLefPresenter> implements F
             @Override
             public void onItemClick(int position) {
                 Intent intent=new Intent(getActivity(), XQActivity.class);
+                intent.putExtra("id",rlist.getList().get(position).getId());
                 intent.putExtra("title",rlist.getList().get(position).getName());
                 intent.putExtra("price",rlist.getList().get(position).getPrice());
                 intent.putExtra("img",rlist.getList().get(position).getImgUrl());
