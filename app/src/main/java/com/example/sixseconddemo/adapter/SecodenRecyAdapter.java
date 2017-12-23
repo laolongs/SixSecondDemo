@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 import com.example.sixseconddemo.R;
 import com.example.sixseconddemo.bean.BestSellerBean;
-
 import com.example.sixseconddemo.bean.EventPass;
 import com.example.sixseconddemo.dao.CarDao;
 import com.facebook.drawee.backends.pipeline.Fresco;
@@ -31,6 +30,10 @@ public class SecodenRecyAdapter extends RecyclerView.Adapter<SecodenRecyAdapter.
     Context context;
     List<BestSellerBean.ListBean> slist;
     CarDao dao;
+    Lv_RT_adapter.OnItemClickListener listener;
+    public void  setOnItemClickListener(Lv_RT_adapter.OnItemClickListener listener) {
+        this.listener = listener;
+    }
     public SecodenRecyAdapter(Context context, List<BestSellerBean.ListBean> slist) {
         this.context = context;
         this.slist = slist;
@@ -40,6 +43,14 @@ public class SecodenRecyAdapter extends RecyclerView.Adapter<SecodenRecyAdapter.
     public SecodenRecyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view=View.inflate(context,R.layout.second_item,null);
         ViewHolder holder=new ViewHolder(view);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (listener!=null){
+                    listener.onItemClick((Integer) view.getTag());
+                }
+            }
+        });
         return holder;
     }
 
@@ -51,6 +62,7 @@ public class SecodenRecyAdapter extends RecyclerView.Adapter<SecodenRecyAdapter.
                 .setUri(Uri.parse(slist.get(position).getImgUrl()))
                 .build();
         holder.sim.setController(controller);
+        holder.itemView.setTag(position);
         holder.btn_gm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,4 +99,8 @@ public class SecodenRecyAdapter extends RecyclerView.Adapter<SecodenRecyAdapter.
 
         }
     }
+    public  interface  OnItemClickListener{
+        public  void onItemClick(int position);
+    }
+
 }

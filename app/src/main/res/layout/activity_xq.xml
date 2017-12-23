@@ -7,7 +7,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.sixseconddemo.activity.XQActivity">
-  <com.facebook.drawee.view.SimpleDraweeView
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:background="#f00"
+        android:textSize="20sp"
+        android:text="商品详情"/>
+    <com.facebook.drawee.view.SimpleDraweeView
       android:layout_marginTop="20dp"
       android:id="@+id/simD"
       android:layout_width="500dp"
@@ -41,12 +50,24 @@
         android:layout_height="60dp">
 
         <Button
+            android:id="@+id/xq_sc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/xq_btn_car"
+            android:layout_alignBottom="@+id/xq_btn_car"
+            android:layout_marginEnd="12dp"
+            android:background="#f00"
+           android:textColor="#ffffff"
+            android:layout_toStartOf="@+id/xq_btn_car"
+            android:text="收藏" />
+
+        <Button
             android:id="@+id/xq_btn_car"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/xq_btn_gm"
             android:layout_alignBottom="@+id/xq_btn_gm"
-            android:layout_marginEnd="18dp"
+            android:layout_marginEnd="11dp"
             android:layout_toStartOf="@+id/xq_btn_gm"
             android:background="#f00"
             android:text="加入购物车"
