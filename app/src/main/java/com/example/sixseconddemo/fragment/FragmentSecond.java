@@ -67,9 +67,4 @@ public class FragmentSecond extends BaseFragment<SecondPresenter>implements Seco
             }
         });
     }
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
-    }
 }
