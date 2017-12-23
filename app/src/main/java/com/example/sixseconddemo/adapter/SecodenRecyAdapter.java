@@ -12,10 +12,13 @@ import android.widget.Toast;
 
 import com.example.sixseconddemo.R;
 import com.example.sixseconddemo.bean.BestSellerBean;
+import com.example.sixseconddemo.bean.EventPass;
 import com.example.sixseconddemo.dao.CarDao;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
