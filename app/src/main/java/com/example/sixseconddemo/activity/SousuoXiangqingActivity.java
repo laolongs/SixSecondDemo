@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.sixseconddemo.R;
 import com.example.sixseconddemo.bean.LaoLiShiBean;
@@ -38,7 +39,6 @@ public class SousuoXiangqingActivity extends AppCompatActivity {
     LaoLiShiBean llsbean;
     ShouyeguanggaoBean shouyebean;
     MyRVadapter   rvadapter;
-    MyRV22adapter   rv22adapter;
     private List<LaoLiShiBean.DatasBean.GoodsListBean> goods_list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,21 +57,12 @@ public class SousuoXiangqingActivity extends AppCompatActivity {
         initData();
 
         String s = Sou_utils.jiami(Sou_utils.convertStringToUTF8(inn));
-        if(inn.equals("劳力士"))
-        {
-            pathlls="http://169.254.239.49/mobile/index.php?act=goods&op=goods_list&page=100";
-            getllshttp();
-            rv22adapter=new MyRV22adapter();
-            rv22adapter.setOnItemClickLinstener(new OnItemClickLinstener() {
-                @Override
-                public void OnItemClick(View view, int position) {
 
-                }
-            });
-        }else {
             path="http://list.mogujie.com/search?_version=61&ratio=3%3A4&q="+s+"%22&cKey=46&minPrice=&_mgjuuid=dbcc6b5c-fcf7-49f4-b807-3e85fbcccc5b&ppath=&page=1&maxPrice=&sort=pop&userId=&cpc_offset=&priceList=&_=1504520539364&callback=jsonp1";
             getokhttp();
-        }
+            MyRVadapter rVadapter=new MyRVadapter(sssbean);
+
+
     }
     private void initData() {
         LinearLayoutManager manager=new LinearLayoutManager(this);
@@ -93,7 +84,6 @@ public class SousuoXiangqingActivity extends AppCompatActivity {
             public void onFailure(Call call, IOException e) {
 
             }
-
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 if(response.isSuccessful())
@@ -115,38 +105,15 @@ public class SousuoXiangqingActivity extends AppCompatActivity {
             }
         });
     }
-    //劳力士的网络获取
-    public void getllshttp() {
-        OkHttp3Utils.doGet(pathlls, new Callback() {
-            @Override
-            public void onFailure(Call call2, IOException e2) {
 
-            }
-
-            @Override
-            public void onResponse(Call call2, Response response2) throws IOException {
-
-                if(response2.isSuccessful())
-                {
-                    Gson gson=new Gson();
-                    String sss=response2.body().string();
-                    llsbean=gson.fromJson(sss,LaoLiShiBean.class);
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-
-                            rrvv.setAdapter(rv22adapter);
-                        }
-                    });
-
-
-                }
-
-            }
-        });
-    }
 //万能的适配器
 class MyRVadapter extends RecyclerView.Adapter<MyRVadapter.MyViewHodler>{
+    OnItemClickLinstener   listener;
+    //获取方法的传参值
+    public void setOnItemClickLinstener(OnItemClickLinstener listener) {
+        //指定当前的值
+        this.listener = listener;
+    }
     WanNengBean es;
 
     public MyRVadapter(WanNengBean es) {
@@ -155,22 +122,32 @@ class MyRVadapter extends RecyclerView.Adapter<MyRVadapter.MyViewHodler>{
 
     @Override
     public MyViewHodler onCreateViewHolder(ViewGroup parent, int viewType) {
-        View   view=View.inflate(SousuoXiangqingActivity.this,R.layout.ss_rv_item2,null);
+        final View   view=View.inflate(SousuoXiangqingActivity.this,R.layout.ss_rv_item2,null);
         MyViewHodler    holder=new MyViewHodler(view);
-
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(MyViewHodler holder, int position) {
+    public void onBindViewHolder(MyViewHodler holder, final int position) {
 
         holder.tv.setText("名称："+es.getResult().getWall().getDocs().get(position).getTitle());
-
+        holder.price.setText("价格:"+es.getResult().getWall().getDocs().get(position).getPrice());
         DraweeController dc= Fresco.newDraweeControllerBuilder()
                 .setUri(es.getResult().getWall().getDocs().get(position).getImg())
                 .setAutoPlayAnimations(true)
                 .build();
         holder.img.setController(dc);
+        holder.itemView.setTag(position);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(SousuoXiangqingActivity.this,XQActivity.class);
+                intent.putExtra("img",es.getResult().getWall().getDocs().get(position).getImg());
+                intent.putExtra("title",es.getResult().getWall().getDocs().get(position).getTitle());
+                intent.putExtra("price",es.getResult().getWall().getDocs().get(position).getPrice());
+               startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -181,71 +158,18 @@ class MyRVadapter extends RecyclerView.Adapter<MyRVadapter.MyViewHodler>{
     class MyViewHodler extends RecyclerView.ViewHolder{
         SimpleDraweeView img;
         TextView   tv;
+        TextView   price;
 
         public MyViewHodler(View itemView) {
             super(itemView);
             img= (SimpleDraweeView) itemView.findViewById(R.id.ss_rv_img22);
             tv= (TextView) itemView.findViewById(R.id.ss_rv_tv22);
+            price= (TextView) itemView.findViewById(R.id.ss_rv_price);
         }
     }
 }
 
-//劳力士的适配器
-class MyRV22adapter extends RecyclerView.Adapter<MyRV22adapter.My22ViewHodler>{
 
-    OnItemClickLinstener   listener;
-    //获取方法的传参值
-    public void setOnItemClickLinstener(OnItemClickLinstener listener) {
-        //指定当前的值
-        this.listener = listener;
-    }
-
-
-    @Override
-    public My22ViewHodler onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view2=View.inflate(SousuoXiangqingActivity.this,R.layout.ss_rv_item2,null);
-        My22ViewHodler   holder2=new My22ViewHodler(view2);
-
-        view2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view2) {
-                //实例化listener来调用接口的方法    强转类型
-                listener.OnItemClick(view2, (int) view2.getTag());
-            }
-        });
-        return holder2;
-    }
-
-    @Override
-    public void onBindViewHolder(My22ViewHodler holder, int position) {
-
-
-        holder.tv2.setText("名称："+llsbean.getDatas().getGoods_list().get(position).getGoods_name());
-
-        DraweeController dc= Fresco.newDraweeControllerBuilder()
-                .setUri(llsbean.getDatas().getGoods_list().get(position).getGoods_image_url())
-                .setAutoPlayAnimations(true)
-                .build();
-        holder.img2.setController(dc);
-        holder.itemView.setTag(position);
-    }
-
-    @Override
-    public int getItemCount() {
-        return llsbean.getDatas().getGoods_list().size();
-    }
-
-    class My22ViewHodler extends RecyclerView.ViewHolder{
-        SimpleDraweeView img2;
-        TextView   tv2;
-
-        public My22ViewHodler(View itemView) {
-            super(itemView);
-            img2= (SimpleDraweeView) itemView.findViewById(R.id.ss_rv_img22);
-            tv2= (TextView) itemView.findViewById(R.id.ss_rv_tv22);
-        }
-    }
-}
 
     //创建接口
     public  interface OnItemClickLinstener{

@@ -31,7 +31,6 @@ public class SousuoActivity extends Activity {
                 {
                     Toast.makeText(SousuoActivity.this,"请输入您要搜索的商品",Toast.LENGTH_SHORT).show();
                 }else {
-
                     intent.putExtra("name",sousuo.getText().toString());
                     startActivity(intent);
                 }
