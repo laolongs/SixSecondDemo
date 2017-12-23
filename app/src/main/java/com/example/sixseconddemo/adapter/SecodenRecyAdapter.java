@@ -76,7 +76,6 @@ public class SecodenRecyAdapter extends RecyclerView.Adapter<SecodenRecyAdapter.
                 pass.setChecked(true);
                 EventBus.getDefault().post(pass);
 
-
             }
         });
 

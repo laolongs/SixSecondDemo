@@ -21,6 +21,9 @@ public abstract class BaseActivity<T extends IPresenter> extends AppCompatActivi
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        presenter.dettch();
+        if(presenter!=null){
+            presenter.dettch();
+        }
+
     }
 }
