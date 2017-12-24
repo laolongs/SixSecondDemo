@@ -7,6 +7,8 @@ public class LoginBean {
      * msg : 登录成功
      * code : 0
      * data : {"age":null,"appkey":"3b52c4551ee00f72","appsecret":"79A735B2A8B3E702BC1ED6BB7213B433","createtime":"2017-11-09T19:49:33","email":null,"gender":null,"icon":null,"mobile":"13278907890","money":null,"nickname":null,"password":"94E3FA7E637B0803B4034D7B1B165B83","token":"F5ED601F6C9D649E494A570AF6E72159","uid":1992,"username":"13278907890"}
+     * 用户名：17744537076
+     * 密码：960602
      */
 
     private String msg;
