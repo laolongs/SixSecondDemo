@@ -1,6 +1,7 @@
 package com.example.sixseconddemo.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sixseconddemo.R;
+import com.example.sixseconddemo.activity.XQActivity;
 import com.example.sixseconddemo.bean.CarBean;
 import com.example.sixseconddemo.bean.EventCheck;
 import com.example.sixseconddemo.bean.EventPriceAndNum;
@@ -50,12 +52,7 @@ public class CarAdatper extends RecyclerView.Adapter<CarAdatper.ViewHolder> {
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view=View.inflate(context,R.layout.fragfouth_car_item,null);
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.OnClickListenre((Integer) v.getTag());
-            }
-        });
+
         return new ViewHolder(view);
     }
 
@@ -112,7 +109,13 @@ public class CarAdatper extends RecyclerView.Adapter<CarAdatper.ViewHolder> {
                 }
             }
         });
-
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(context, XQActivity.class);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -148,15 +151,21 @@ public class CarAdatper extends RecyclerView.Adapter<CarAdatper.ViewHolder> {
     //删除的方法
     public void delete(){
         for (int i = 0; i < list.size(); i++) {
-            CarBean bean = list.get(i);
-            if(bean.isChecked()){
-                list.remove(i);
-                dao.delete(bean.getTitle());
-            }
+
+                CarBean bean = list.get(i);
+                    if(bean.isChecked())
+                    {
+                        list.remove(i);
+                        i--;
+                        dao.delete(bean.getTitle());
+                    }
+                    Log.i("----list.size--", "delete: "+list.size()+"----"+dao.queryAll().size());
+                    EventBus.getDefault().post(compute());
+                    notifyDataSetChanged();
+
+
         }
-        Log.i("----list.size--", "delete: "+list.size()+"----"+dao.queryAll().size());
-        EventBus.getDefault().post(compute());
-        notifyDataSetChanged();
+
     }
     //判断全选和反选
     public void changAllListCbState(boolean flag){

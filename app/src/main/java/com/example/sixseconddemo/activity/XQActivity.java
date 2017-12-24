@@ -17,7 +17,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 
 public class XQActivity extends AppCompatActivity {
     TextView xq_tv_title,xq_tv_price;
-    Button xq_btn_car,xq_btn_gm;
+    Button xq_btn_car,xq_btn_gm,xq_sc;
     SimpleDraweeView sidm;
     CarDao dao;
     @Override
@@ -33,8 +33,10 @@ public class XQActivity extends AppCompatActivity {
         xq_tv_price= findViewById(R.id.xq_tv_price);
         xq_btn_car= findViewById(R.id.xq_btn_car);
         xq_btn_gm= findViewById(R.id.xq_btn_gm);
+        xq_sc=findViewById(R.id.xq_sc);
         sidm=findViewById(R.id.simD);
         Intent intent=getIntent();
+        final   int id = intent.getIntExtra("id",0);
         final String title = intent.getStringExtra("title");
         final Double price = intent.getDoubleExtra("price",0);
         final String img = intent.getStringExtra("img");
@@ -69,6 +71,11 @@ public class XQActivity extends AppCompatActivity {
 
             }
         });
+        xq_sc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+            }
+        });
     }
 }
