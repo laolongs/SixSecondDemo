@@ -4,6 +4,7 @@ import com.example.sixseconddemo.bean.BestSellerBean;
 import com.example.sixseconddemo.bean.FenLeiRight;
 import com.example.sixseconddemo.bean.FenleiLeft;
 import com.example.sixseconddemo.bean.RegBean;
+import com.example.sixseconddemo.bean.SoucangBean;
 import com.example.sixseconddemo.bean.User;
 import com.example.sixseconddemo.msg.LoginRespMsg;
 
@@ -15,7 +16,9 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 import rx.Observable;
 
 /**
@@ -46,4 +49,8 @@ public interface HomeApi {
     @FormUrlEncoded
     @POST("course_api/favorite/create?")
     Call<ResponseBody> getSc(@FieldMap HashMap<String,Object> map);
+
+    //@FormUrlEncoded
+    @GET("course_api/favorite/list?")
+    Observable<List<SoucangBean>> getscshow(@Query("user_id")String user_id,@Query("token")String token);
 }
