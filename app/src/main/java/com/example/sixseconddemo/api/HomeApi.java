@@ -5,6 +5,8 @@ import com.example.sixseconddemo.bean.FenLeiRight;
 import com.example.sixseconddemo.bean.FenleiLeft;
 import com.example.sixseconddemo.bean.RegBean;
 import com.example.sixseconddemo.bean.User;
+import com.example.sixseconddemo.bean.addressSuccessBean;
+import com.example.sixseconddemo.bean.showAddressBean;
 import com.example.sixseconddemo.msg.LoginRespMsg;
 
 import java.util.HashMap;
@@ -15,7 +17,9 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 import rx.Observable;
 
 /**
@@ -30,10 +34,11 @@ public interface HomeApi {
     //分类
     @POST("course_api/category/list")
     Observable<List<FenleiLeft>> getleft();
-
+    //login
     @POST("course_api/auth/login")
     @FormUrlEncoded
     Observable<LoginRespMsg<User>> getlogMap(@FieldMap Map<String,String> map);
+    //reg
     @FormUrlEncoded
     @POST("user/reg")
     Observable<RegBean> getregMap(@FieldMap Map<String,String> map);
@@ -46,4 +51,15 @@ public interface HomeApi {
     @FormUrlEncoded
     @POST("course_api/favorite/create?")
     Call<ResponseBody> getSc(@FieldMap HashMap<String,Object> map);
+    //showAddress
+    @GET("course_api/addr/list?")
+    Observable<List<showAddressBean>> getaddress(@Query("user_id") String user_id,@Query("token") String token);
+    //addAddress
+    @FormUrlEncoded
+    @POST("course_api/addr/create")
+    Observable<addressSuccessBean> getaddDress(@FieldMap Map<String,String> map);
+    //deleteAddress
+    @FormUrlEncoded
+    @POST("course_api/addr/del")
+    Observable<addressSuccessBean> getdelDress(@FieldMap Map<String,String> map);
 }
