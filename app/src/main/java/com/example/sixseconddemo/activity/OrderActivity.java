@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.sixseconddemo.R;
@@ -19,14 +20,19 @@ import butterknife.ButterKnife;
 
 public class OrderActivity extends BaseActivity<OrderPresenter> {
 
+
     @BindView(R.id.fouth_head_dd)
     TextView fouthHeadDd;
+    @BindView(R.id.order_header)
+    LinearLayout orderHeader;
     @BindView(R.id.order_recy)
     RecyclerView orderRecy;
-    @BindView(R.id.fouth_foot_hj)
-    TextView fouthFootHj;
-    @BindView(R.id.fouth_foot_js)
-    TextView fouthFootJs;
+    @BindView(R.id.order_foot_hj)
+    TextView orderFootHj;
+    @BindView(R.id.order_foot_commit)
+    TextView orderFootCommit;
+    @BindView(R.id.order_foot)
+    LinearLayout orderFoot;
     private OrderAdapter adapter;
 
     //   user_id 279643
@@ -50,6 +56,7 @@ public class OrderActivity extends BaseActivity<OrderPresenter> {
         adapter.addFoot(foot);
         adapter.getorderData();
         adapter.notifyDataSetChanged();
+        orderFootHj.setText("合计："+adapter.getPrice());
     }
 
     private void initData() {

@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sixseconddemo.R;
+import com.example.sixseconddemo.activity.OrderActivity;
 import com.example.sixseconddemo.activity.XQActivity;
 import com.example.sixseconddemo.bean.CarBean;
 import com.example.sixseconddemo.bean.EventCheck;
@@ -213,9 +214,11 @@ public class CarAdatper extends RecyclerView.Adapter<CarAdatper.ViewHolder> {
         return priceAndNum;
     }
     public void select(){
+        int a=0;
         for (int i = 0; i < list.size(); i++) {
             CarBean bean = list.get(i);
             if(bean.isChecked()){
+                a++;
                 ContentValues values=new ContentValues();
                 values.put("flag","1");
                 dao.update(values,bean.getUserid());
@@ -223,9 +226,16 @@ public class CarAdatper extends RecyclerView.Adapter<CarAdatper.ViewHolder> {
                 ContentValues values=new ContentValues();
                 values.put("flag","0");
                 dao.update(values,bean.getUserid());
-                Toast.makeText(context, "请选择商品", Toast.LENGTH_SHORT).show();
-                return;
             }
         }
+        if(a>0){
+            Intent intent=new Intent(context, OrderActivity.class);
+            context.startActivity(intent);
+        }else{
+            Toast.makeText(context, "请选择商品", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+
     }
 }
