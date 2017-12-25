@@ -4,6 +4,7 @@ import com.example.sixseconddemo.bean.BestSellerBean;
 import com.example.sixseconddemo.bean.FenLeiRight;
 import com.example.sixseconddemo.bean.FenleiLeft;
 import com.example.sixseconddemo.bean.RegBean;
+import com.example.sixseconddemo.bean.SoucangBean;
 import com.example.sixseconddemo.bean.User;
 import com.example.sixseconddemo.bean.addressSuccessBean;
 import com.example.sixseconddemo.bean.showAddressBean;
@@ -51,6 +52,11 @@ public interface HomeApi {
     @FormUrlEncoded
     @POST("course_api/favorite/create?")
     Call<ResponseBody> getSc(@FieldMap HashMap<String,Object> map);
+
+
+    //@FormUrlEncoded
+    @GET("course_api/favorite/list?")
+    Observable<List<SoucangBean>> getscshow(@Query("user_id")String user_id,@Query("token")String token);
     //showAddress
     @GET("course_api/addr/list?")
     Observable<List<showAddressBean>> getaddress(@Query("user_id") String user_id,@Query("token") String token);

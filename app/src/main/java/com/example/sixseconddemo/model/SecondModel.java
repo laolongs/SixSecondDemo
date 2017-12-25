@@ -1,6 +1,7 @@
 package com.example.sixseconddemo.model;
 
 import com.example.sixseconddemo.api.BaseUrl;
+import com.example.sixseconddemo.api.GetRequest_In;
 import com.example.sixseconddemo.api.HomeApi;
 import com.example.sixseconddemo.utils.RetrofitManager;
 
@@ -13,9 +14,7 @@ import okhttp3.OkHttpClient;
 public class SecondModel implements ISecondModel {
     @Override
     public HomeApi getsencond() {
-        OkHttpClient client=new OkHttpClient.Builder().build();
-        HomeApi setcreate = RetrofitManager.getinstantce(BaseUrl.Baseurl, client)
-                .setcreate(HomeApi.class);
+        HomeApi setcreate = RetrofitManager.getinstantce(BaseUrl.Baseurl, new OkHttpClient()).setcreate(HomeApi.class);
         return setcreate;
     }
 }
