@@ -11,6 +11,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import okhttp3.ResponseBody;
+import retrofit2.Call;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
@@ -36,8 +38,12 @@ public interface HomeApi {
     @POST("user/reg")
     Observable<RegBean> getregMap(@FieldMap Map<String,String> map);
 
-
     @FormUrlEncoded
     @POST("course_api/wares/list?")
     Observable<FenLeiRight> getright(@FieldMap HashMap<String,Integer> map);
+
+    // user_id=279643&ware_id=2
+    @FormUrlEncoded
+    @POST("course_api/favorite/create?")
+    Call<ResponseBody> getSc(@FieldMap HashMap<String,Object> map);
 }
