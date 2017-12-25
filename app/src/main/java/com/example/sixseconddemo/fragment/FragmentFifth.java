@@ -16,7 +16,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sixseconddemo.R;
+import com.example.sixseconddemo.activity.AddressActivity;
 import com.example.sixseconddemo.activity.LoginActivity;
+import com.example.sixseconddemo.activity.MyDingDanActivity;
+import com.example.sixseconddemo.activity.SouCangShowActivity;
 import com.example.sixseconddemo.utils.SharedUtil;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.interfaces.DraweeController;
@@ -132,9 +135,25 @@ public class FragmentFifth extends Fragment {
         }
 
         @Override
-        public void onBindViewHolder(MyViewHolder holder, int position) {
+        public void onBindViewHolder(MyViewHolder holder, final int position) {
             holder.iv.setImageResource(listimages.get(position));
             holder.tv.setText(listtvs.get(position));
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    switch (position){
+                        case 0:
+                            startActivity(new Intent(getActivity(), MyDingDanActivity.class));
+                        break;
+                        case 1:
+                            startActivity(new Intent(getActivity(), SouCangShowActivity.class));
+                        break;
+                        case 2:
+                            startActivity(new Intent(getActivity(), AddressActivity.class));
+                        break;
+                    }
+                }
+            });
         }
 
         @Override
