@@ -101,6 +101,7 @@ public class FragmentFouth extends Fragment {
 
                 if(name.equals("去结算")){
                     if(userid!=null){
+                        adatper.select();
                         Intent intent=new Intent(getActivity(), OrderActivity.class);
                         startActivity(intent);
                     }else{

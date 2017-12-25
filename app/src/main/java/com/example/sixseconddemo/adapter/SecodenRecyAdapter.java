@@ -67,6 +67,7 @@ public class SecodenRecyAdapter extends RecyclerView.Adapter<SecodenRecyAdapter.
             @Override
             public void onClick(View v) {
                 ContentValues values=new ContentValues();
+                values.put("userid",slist.get(position).getId());
                 values.put("title", slist.get(position).getName());
                 values.put("img",slist.get(position).getImgUrl());
                 values.put("price",slist.get(position).getPrice());

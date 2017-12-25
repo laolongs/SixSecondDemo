@@ -1,5 +1,6 @@
 package com.example.sixseconddemo.adapter;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
@@ -210,5 +211,21 @@ public class CarAdatper extends RecyclerView.Adapter<CarAdatper.ViewHolder> {
         priceAndNum.setNum(num);
         priceAndNum.setPrice(price);
         return priceAndNum;
+    }
+    public void select(){
+        for (int i = 0; i < list.size(); i++) {
+            CarBean bean = list.get(i);
+            if(bean.isChecked()){
+                ContentValues values=new ContentValues();
+                values.put("flag","1");
+                dao.update(values,bean.getUserid());
+            }else{
+                ContentValues values=new ContentValues();
+                values.put("flag","0");
+                dao.update(values,bean.getUserid());
+                Toast.makeText(context, "请选择商品", Toast.LENGTH_SHORT).show();
+                return;
+            }
+        }
     }
 }
