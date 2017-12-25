@@ -27,14 +27,13 @@
             android:name=".activity.RegisterActivity"
             android:theme="@style/Translucent" />
         <activity android:name=".activity.SousuoActivity" />
-        <activity android:name=".activity.XQActivity"/>
         <activity android:name=".activity.SousuoXiangqingActivity" />
-
-
-        <activity android:name=".activity.XiangqingActivity"></activity>
-        <activity android:name=".activity.XQActivity"></activity>
-
-
+        <activity android:name=".activity.XiangqingActivity" />
+        <activity android:name=".activity.XQActivity" />
+        <activity android:name=".activity.OrderActivity" />
+        <activity android:name=".activity.SouCangShowActivity" />
+        <activity android:name=".activity.AddressActivity" />
+        <activity android:name=".activity.MyDingDanActivity"></activity>
     </application>
 
 </manifest>

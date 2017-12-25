@@ -84,6 +84,9 @@ public class loginpresenter implements IPresenter<ILoginview> {
                        SharedUtil.getInstances().saveDatad(context,"userid",data.getId().toString());
                  //     String  userid = (String) SharedUtil.getInstances().getValueByKey(context, "userid", "");
                  //     Log.i("-----userid-----", "onNext: "+userid);
+                       SharedUtil.getInstances().saveDatad(context,"username",data.getUsername().toString());
+                       String  userid = (String) SharedUtil.getInstances().getValueByKey(context, "userid", "");
+//                       Log.i("-----userid-----", "onNext: "+userid);>> master
                        context.startActivity(new Intent(context, MainActivity.class));
                    }
                });

@@ -1,5 +1,6 @@
 package com.example.sixseconddemo.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,12 +14,15 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.sixseconddemo.R;
+import com.example.sixseconddemo.activity.OrderActivity;
 import com.example.sixseconddemo.adapter.CarAdatper;
 import com.example.sixseconddemo.bean.EventCheck;
 import com.example.sixseconddemo.bean.EventPass;
 import com.example.sixseconddemo.bean.EventPriceAndNum;
+import com.example.sixseconddemo.utils.SharedUtil;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -54,12 +58,15 @@ public class FragmentFouth extends Fragment {
     private View view;
     public CarAdatper adatper;
     int count=0;
+    private String userid;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = View.inflate(getActivity(), R.layout.fragfouth, null);
         EventBus.getDefault().register(this);
         unbinder = ButterKnife.bind(this, view);
+        userid = (String) SharedUtil.getInstances().getValueByKey(getActivity(), "userid", "");
         initData();
         initConfig();
         return view;
@@ -91,8 +98,14 @@ public class FragmentFouth extends Fragment {
             public void onClick(View v) {
 
                 String name = fouthFootJs.getText().toString();
-                if(name.equals("去结算")){
 
+                if(name.equals("去结算")){
+                    if(userid!=null){
+                        Intent intent=new Intent(getActivity(), OrderActivity.class);
+                        startActivity(intent);
+                    }else{
+                        Toast.makeText(getActivity(), "请先登录", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 if(name.equals("删除")){
                             adatper.delete();
