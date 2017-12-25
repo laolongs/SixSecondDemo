@@ -11,21 +11,26 @@ import android.widget.Toast;
 
 import com.example.sixseconddemo.R;
 import com.example.sixseconddemo.dao.CarDao;
+import com.example.sixseconddemo.presenter.SCPresenter;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
 
-public class XQActivity extends AppCompatActivity {
+public class XQActivity extends AppCompatActivity{
     TextView xq_tv_title,xq_tv_price;
     Button xq_btn_car,xq_btn_gm,xq_sc;
     SimpleDraweeView sidm;
     CarDao dao;
+    SCPresenter  Presenter;
+    int id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_xq);
         initview();
          dao=new CarDao(this);
+         Presenter=  new SCPresenter(this);
+
 
     }
     private void initview() {
@@ -36,7 +41,7 @@ public class XQActivity extends AppCompatActivity {
         xq_sc=findViewById(R.id.xq_sc);
         sidm=findViewById(R.id.simD);
         Intent intent=getIntent();
-        final   int id = intent.getIntExtra("id",0);
+       id = intent.getIntExtra("id",0);
         final String title = intent.getStringExtra("title");
         final Double price = intent.getDoubleExtra("price",0);
         final String img = intent.getStringExtra("img");
@@ -74,7 +79,7 @@ public class XQActivity extends AppCompatActivity {
         xq_sc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Presenter.showSC(id);
             }
         });
     }

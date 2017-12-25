@@ -82,9 +82,11 @@ public class loginpresenter implements IPresenter<ILoginview> {
                        Log.i("getLogo_url---", "onNext: "+data.getLogo_url());
                        SharedUtil.getInstances().saveDatad(context,"flag",true);
                        SharedUtil.getInstances().saveDatad(context,"userid",data.getId().toString());
+                 //     String  userid = (String) SharedUtil.getInstances().getValueByKey(context, "userid", "");
+                 //     Log.i("-----userid-----", "onNext: "+userid);
                        SharedUtil.getInstances().saveDatad(context,"username",data.getUsername().toString());
                        String  userid = (String) SharedUtil.getInstances().getValueByKey(context, "userid", "");
-//                       Log.i("-----userid-----", "onNext: "+userid);
+//                       Log.i("-----userid-----", "onNext: "+userid);>> master
                        context.startActivity(new Intent(context, MainActivity.class));
                    }
                });
