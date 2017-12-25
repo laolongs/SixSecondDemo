@@ -32,8 +32,9 @@
         <activity android:name=".activity.OrderActivity"
             android:launchMode="singleTask"/>
         <activity android:name=".activity.SouCangShowActivity" />
-        <activity android:name=".activity.AddressActivity" />
-        <activity android:name=".activity.MyDingDanActivity"></activity>
+        <activity android:name=".activity.AddressActivity"/>
+        <activity android:name=".activity.MyDingDanActivity" />
+        <activity android:name=".activity.AddAddressActivity"></activity>
     </application>
 
 </manifest>
