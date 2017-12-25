@@ -79,28 +79,37 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
         }
         if (holder instanceof MainViewHolder) {
-            ((MainViewHolder)holder).orderMainTitle.setText(list.get(position-listhead.size()).getTitle());
-            DraweeController build = Fresco.newDraweeControllerBuilder().setUri(list.get(position-listhead.size()).getImg()).build();
-            ((MainViewHolder)holder).orderMainSdv.setController(build);
-            ((MainViewHolder)holder).orderMainPrice.setText("￥"+list.get(position-listhead.size()).getPrice());
+            ((MainViewHolder) holder).orderMainTitle.setText(list.get(position - listhead.size()).getTitle());
+            DraweeController build = Fresco.newDraweeControllerBuilder().setUri(list.get(position - listhead.size()).getImg()).build();
+            ((MainViewHolder) holder).orderMainSdv.setController(build);
+            ((MainViewHolder) holder).orderMainPrice.setText("￥" + list.get(position - listhead.size()).getPrice());
+//            ((MainViewHolder) holder).orderMainNums.setText("1");
+            ((MainViewHolder) holder).orderMainPrices.setText("￥" + list.get(position - listhead.size()).getPrice());
         }
         if (holder instanceof FootViewHolder) {
 
         }
     }
-
+    public String getPrice(){
+        int price=0;
+        for (int i = 0; i < list.size(); i++) {
+            CarBean bean = list.get(i);
+            price+= Double.parseDouble(bean.getPrice());
+        }
+        return price+"";
+    }
 
     @Override
     public int getItemCount() {
         Log.i("----order.size--------", "getItemCount: " + list.size());
-        return list == null ? 0 : list.size()+2;
+        return list == null ? 0 : list.size() + 2;
     }
 
     @Override
     public int getItemViewType(int position) {
         if (position < listhead.size()) {
             return TYPE_HEAD;
-        } else if (position >= list.size()+listhead.size()) {
+        } else if (position >= list.size() + listhead.size()) {
             return TYPE_FOOT;
         } else {
             return TYPE_MAIN;
@@ -117,9 +126,13 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         TextView orderMainPrice;
         @BindView(R.id.order_main_num)
         TextView orderMainNum;
+        @BindView(R.id.order_main_nums)
+        TextView orderMainNums;
+        @BindView(R.id.order_main_prices)
+        TextView orderMainPrices;
         public MainViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(this,itemView);
+            ButterKnife.bind(this, itemView);
         }
     }
 
@@ -137,16 +150,17 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
         public HeadViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(this,itemView);
+            ButterKnife.bind(this, itemView);
         }
     }
 
     public class FootViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.order_main_foot_ck)
         CheckBox orderMainFootCk;
+
         public FootViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(this,itemView);
+            ButterKnife.bind(this, itemView);
         }
     }
 }

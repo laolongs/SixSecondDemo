@@ -1,6 +1,5 @@
 package com.example.sixseconddemo.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -17,7 +16,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sixseconddemo.R;
-import com.example.sixseconddemo.activity.OrderActivity;
 import com.example.sixseconddemo.adapter.CarAdatper;
 import com.example.sixseconddemo.bean.EventCheck;
 import com.example.sixseconddemo.bean.EventPass;
@@ -102,8 +100,6 @@ public class FragmentFouth extends Fragment {
                 if(name.equals("去结算")){
                     if(userid!=null){
                         adatper.select();
-                        Intent intent=new Intent(getActivity(), OrderActivity.class);
-                        startActivity(intent);
                     }else{
                         Toast.makeText(getActivity(), "请先登录", Toast.LENGTH_SHORT).show();
                     }

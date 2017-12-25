@@ -54,7 +54,7 @@
             android:layout_marginRight="10dp"
             android:text="合计:￥0"
             android:textSize="20sp"
-            android:id="@+id/fouth_foot_hj"
+            android:id="@+id/order_foot_hj"
             />
         <TextView
             android:layout_width="100dp"
@@ -64,7 +64,7 @@
             android:gravity="center"
             android:textSize="20sp"
             android:textColor="#fff"
-            android:id="@+id/fouth_foot_js"
+            android:id="@+id/order_foot_commit"
             />
     </LinearLayout>
 </RelativeLayout>
