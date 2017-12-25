@@ -54,6 +54,7 @@ public class FragmentFifth extends Fragment {
     String urllog = "res://com.example.sixseconddemo/" + R.drawable.loghead;
     List<String> listtvs = new ArrayList<>();
     List<Integer> listimages = new ArrayList<>();
+    private String userid;
 
     @Nullable
     @Override
@@ -66,9 +67,9 @@ public class FragmentFifth extends Fragment {
         return view;
     }
     private void fifthislog() {
-        String userid = (String) SharedUtil.getInstances().getValueByKey(getActivity(), "userid", "");
+        userid = (String) SharedUtil.getInstances().getValueByKey(getActivity(), "userid", "");
         String username = (String) SharedUtil.getInstances().getValueByKey(getActivity(), "username", "");
-        if(userid!=""){
+        if(userid !=""){
             Toast.makeText(getActivity(),"login",Toast.LENGTH_SHORT).show();
             //判断登录后改变头像
             Uri uri2 = Uri.parse(urllog);
@@ -141,17 +142,23 @@ public class FragmentFifth extends Fragment {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    switch (position){
-                        case 0:
-                            startActivity(new Intent(getActivity(), MyDingDanActivity.class));
-                        break;
-                        case 1:
-                            startActivity(new Intent(getActivity(), SouCangShowActivity.class));
-                        break;
-                        case 2:
-                            startActivity(new Intent(getActivity(), AddressActivity.class));
-                        break;
+                    if(userid!=""){
+                        switch (position){
+                            case 0:
+                                startActivity(new Intent(getActivity(), MyDingDanActivity.class));
+                                break;
+                            case 1:
+                                startActivity(new Intent(getActivity(), SouCangShowActivity.class));
+                                break;
+                            case 2:
+                                startActivity(new Intent(getActivity(), AddressActivity.class));
+                                break;
+                        }
+                    }else{
+                        Toast.makeText(getActivity(),"please login",Toast.LENGTH_SHORT).show();
+                        return;
                     }
+
                 }
             });
         }

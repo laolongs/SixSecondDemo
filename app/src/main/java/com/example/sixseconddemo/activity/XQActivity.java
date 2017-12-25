@@ -55,6 +55,7 @@ public class XQActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 ContentValues values=new ContentValues();
+                values.put("userid",id+"");
                 values.put("title",title);
                 values.put("img",img);
                 values.put("price",price);
@@ -68,6 +69,7 @@ public class XQActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 ContentValues values=new ContentValues();
+                values.put("userid",id+"");
                 values.put("title",title);
                 values.put("img",img);
                 values.put("price",price);

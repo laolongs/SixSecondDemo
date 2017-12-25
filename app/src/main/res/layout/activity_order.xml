@@ -9,7 +9,7 @@
         android:orientation="horizontal"
         android:background="#f00"
         android:gravity="center"
-        android:id="@+id/searchedit_header">
+        android:id="@+id/order_header">
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -23,14 +23,14 @@
             android:text="确认订单"
             android:textSize="25sp"
             android:textColor="#fff"
-            android:id="@+id/fouth_head_gw"
+            android:id="@+id/fouth_head_dd"
             />
 
     </LinearLayout>
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/fouth_recy"
-        android:layout_below="@+id/searchedit_header"
-        android:layout_above="@+id/searchedit_foot"
+        android:id="@+id/order_recy"
+        android:layout_below="@+id/order_header"
+        android:layout_above="@+id/order_foot"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </android.support.v7.widget.RecyclerView>
@@ -41,7 +41,7 @@
         android:background="#fff"
         android:layout_alignParentBottom="true"
         android:gravity="center"
-        android:id="@+id/searchedit_foot">
+        android:id="@+id/order_foot">
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -54,7 +54,7 @@
             android:layout_marginRight="10dp"
             android:text="合计:￥0"
             android:textSize="20sp"
-            android:id="@+id/fouth_foot_hj"
+            android:id="@+id/order_foot_hj"
             />
         <TextView
             android:layout_width="100dp"
@@ -64,7 +64,7 @@
             android:gravity="center"
             android:textSize="20sp"
             android:textColor="#fff"
-            android:id="@+id/fouth_foot_js"
+            android:id="@+id/order_foot_commit"
             />
     </LinearLayout>
 </RelativeLayout>

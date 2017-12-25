@@ -5,12 +5,22 @@ package com.example.sixseconddemo.bean;
  */
 
 public class CarBean {
+    String userid;
     String title;
     String img;
     String price;
     boolean checked;
     int num=1;
      boolean state;
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
+
     public CarBean(boolean state) {
         this.state = state;
     }
@@ -42,7 +52,9 @@ public class CarBean {
     public CarBean(){
 
     }
-    public CarBean(String title, String img, String price) {
+
+    public CarBean(String userid, String title, String img, String price) {
+        this.userid = userid;
         this.title = title;
         this.img = img;
         this.price = price;
