@@ -1,6 +1,7 @@
 package com.example.sixseconddemo.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -45,6 +46,7 @@ public class AddAddressActivity extends BaseActivity<AddDressPresenter> implemen
         fifthHeadFh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.i("onClick-----", "onClick: ");
                 finish();
             }
         });
