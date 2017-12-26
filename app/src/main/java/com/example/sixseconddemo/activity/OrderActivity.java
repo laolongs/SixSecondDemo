@@ -60,6 +60,7 @@ public class OrderActivity extends BaseActivity<OrderPresenter> {
     }
 
     private void initData() {
+
         long userid = (long) SharedUtil.getInstances().getValueByKey(this, "userid", null);
         String itemjson = "";
         int price = 0;

@@ -65,5 +65,6 @@ public class AddressActivity extends BaseActivity<AddressPresenter> implements a
         addressAdapter = new AddressAdapter(AddressActivity.this, listaddress);
         rvfifth.setAdapter(addressAdapter);
         rvfifth.addItemDecoration(new SimleDividerItemDecoration(this));
+//        addressAdapter.notifyDataSetChanged();
     }
 }

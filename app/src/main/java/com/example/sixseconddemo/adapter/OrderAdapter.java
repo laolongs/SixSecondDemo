@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import com.example.sixseconddemo.R;
 import com.example.sixseconddemo.bean.CarBean;
+import com.example.sixseconddemo.bean.showAddressBean;
+import com.example.sixseconddemo.dao.AddDao;
 import com.example.sixseconddemo.dao.CarDao;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.interfaces.DraweeController;
@@ -33,8 +35,11 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     public static final int TYPE_FOOT = 2;
     List<View> listhead = new ArrayList<>();
     List<View> listfoot = new ArrayList<>();
+    String isDefault="1";
+    List<showAddressBean> queryadd;
     Context context;
     CarDao dao;
+    AddDao addDao;
     String flag = "1";
     List<CarBean> list;
 
@@ -51,11 +56,15 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     public OrderAdapter(Context context) {
         this.context = context;
         dao = new CarDao(context);
+        addDao=new AddDao(context);
     }
 
     public void getorderData() {
         List<CarBean> query = dao.query(flag);
+        List<showAddressBean> queryadd = addDao.queryadd(isDefault);
         this.list = query;
+        this.queryadd=queryadd;
+        Log.i("----queryadd.size----", "getItemCount: " + queryadd.size());
     }
 
     @Override
@@ -76,7 +85,9 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof HeadViewHolder) {
-
+            ((HeadViewHolder)holder).orderMainShouhuo.setText("收货人："+queryadd.get(position).getConsignee());
+            ((HeadViewHolder)holder).orderMainPhone.setText("电话："+queryadd.get(position).getPhone());
+            ((HeadViewHolder)holder).orderMainAddress.setText("收货地址："+queryadd.get(position).getAddr());
         }
         if (holder instanceof MainViewHolder) {
             ((MainViewHolder) holder).orderMainTitle.setText(list.get(position - listhead.size()).getTitle());
