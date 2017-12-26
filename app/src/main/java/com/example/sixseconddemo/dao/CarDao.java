@@ -31,15 +31,36 @@ public class CarDao {
         db.delete(TABLE,"title=?",new String[]{title});
         db.close();
     }
+    public void update(ContentValues values,String userid){
+        SQLiteDatabase db = helper.getWritableDatabase();
+        db.update(TABLE,values,"userid=?",new String[]{userid});
+        db.close();
+    }
     public List<CarBean> queryAll(){
         List<CarBean> list=new ArrayList<>();
         SQLiteDatabase db = helper.getReadableDatabase();
         Cursor cursor = db.query(TABLE, null, null, null, null, null, null);
         while (cursor.moveToNext()){
+            String userid=cursor.getString(cursor.getColumnIndex("userid"));
             String title = cursor.getString(cursor.getColumnIndex("title"));
             String img = cursor.getString(cursor.getColumnIndex("img"));
             String price = cursor.getString(cursor.getColumnIndex("price"));
-            CarBean bean=new CarBean(title,img,price);
+            CarBean bean=new CarBean(userid,title,img,price);
+            list.add(bean);
+        }
+        db.close();
+        return list;
+    }
+    public List<CarBean> query(String flag){
+        List<CarBean> list=new ArrayList<>();
+        SQLiteDatabase db = helper.getReadableDatabase();
+        Cursor cursor = db.query(TABLE, null, "flag=?", new String[]{flag}, null, null, null);
+        while (cursor.moveToNext()){
+            String userid=cursor.getString(cursor.getColumnIndex("userid"));
+            String title = cursor.getString(cursor.getColumnIndex("title"));
+            String img = cursor.getString(cursor.getColumnIndex("img"));
+            String price = cursor.getString(cursor.getColumnIndex("price"));
+            CarBean bean=new CarBean(userid,title,img,price);
             list.add(bean);
         }
         db.close();

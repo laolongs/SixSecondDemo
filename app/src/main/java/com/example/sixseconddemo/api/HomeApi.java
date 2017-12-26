@@ -6,6 +6,8 @@ import com.example.sixseconddemo.bean.FenleiLeft;
 import com.example.sixseconddemo.bean.RegBean;
 import com.example.sixseconddemo.bean.SoucangBean;
 import com.example.sixseconddemo.bean.User;
+import com.example.sixseconddemo.bean.addressSuccessBean;
+import com.example.sixseconddemo.bean.showAddressBean;
 import com.example.sixseconddemo.msg.LoginRespMsg;
 
 import java.util.HashMap;
@@ -33,10 +35,11 @@ public interface HomeApi {
     //分类
     @POST("course_api/category/list")
     Observable<List<FenleiLeft>> getleft();
-
+    //login
     @POST("course_api/auth/login")
     @FormUrlEncoded
     Observable<LoginRespMsg<User>> getlogMap(@FieldMap Map<String,String> map);
+    //reg
     @FormUrlEncoded
     @POST("user/reg")
     Observable<RegBean> getregMap(@FieldMap Map<String,String> map);
@@ -50,7 +53,19 @@ public interface HomeApi {
     @POST("course_api/favorite/create?")
     Call<ResponseBody> getSc(@FieldMap HashMap<String,Object> map);
 
+
     //@FormUrlEncoded
     @GET("course_api/favorite/list?")
     Observable<List<SoucangBean>> getscshow(@Query("user_id")String user_id,@Query("token")String token);
+    //showAddress
+    @GET("course_api/addr/list?")
+    Observable<List<showAddressBean>> getaddress(@Query("user_id") String user_id,@Query("token") String token);
+    //addAddress
+    @FormUrlEncoded
+    @POST("course_api/addr/create")
+    Observable<addressSuccessBean> getaddDress(@FieldMap Map<String,String> map);
+    //deleteAddress
+    @FormUrlEncoded
+    @POST("course_api/addr/del")
+    Observable<addressSuccessBean> getdelDress(@FieldMap Map<String,String> map);
 }

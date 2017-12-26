@@ -17,8 +17,10 @@ public class MySQlite extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql="create table car (id integer primary key autoincrement,img varchar,title varchar unique,price varchar)";
+        String sql="create table car (id integer primary key autoincrement,userid varchar,img varchar,title varchar unique,price varchar,flag varchar)";
         db.execSQL(sql);
+        String sql2="create table adds (id integer primary key autoincrement,addid varchar,adduserid varchar,consignee varchar,phone varchar unique,addr varchar,zipCode varchar,isDefault varchar)";
+        db.execSQL(sql2);
     }
 
     @Override
