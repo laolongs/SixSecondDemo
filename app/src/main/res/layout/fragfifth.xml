@@ -6,12 +6,12 @@
     android:layout_height="match_parent">
 <RelativeLayout
     android:layout_width="match_parent"
-    android:layout_height="90dp"
+    android:layout_height="@dimen/y200"
     android:id="@+id/rlmine"
     android:background="#ef4136">
     <com.facebook.drawee.view.SimpleDraweeView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/x120"
+        android:layout_height="@dimen/y120"
         android:id="@+id/sdvtou"
         fresco:roundAsCircle="true"
         android:layout_centerInParent="true"

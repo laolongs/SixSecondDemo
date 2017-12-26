@@ -17,8 +17,8 @@
 
         <ImageView
             android:id="@+id/sss_fh2"
-            android:layout_width="40dp"
-            android:layout_height="59dp"
+            android:layout_width="@dimen/x80"
+            android:layout_height="@dimen/y108"
             android:src="@drawable/fh"
             android:textSize="30dp"
             android:layout_marginLeft="10dp"/>

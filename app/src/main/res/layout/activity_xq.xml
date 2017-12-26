@@ -10,23 +10,24 @@
     <TextView
         android:id="@+id/tv"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/y100"
         android:gravity="center"
         android:textColor="#ffffff"
         android:background="#f00"
         android:textSize="20sp"
         android:text="商品详情"/>
+
     <com.facebook.drawee.view.SimpleDraweeView
-      android:layout_marginTop="20dp"
-      android:id="@+id/simD"
-      android:layout_width="500dp"
-      android:layout_centerHorizontal="true"
-      android:layout_height="300dp" />
+        android:id="@+id/simD"
+        android:layout_width="@dimen/x800"
+        android:layout_height="@dimen/y600"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tv" />
 
     <TextView
         android:id="@+id/xq_tv_title"
         android:layout_below="@+id/simD"
-        android:layout_width="500dp"
+        android:layout_width="@dimen/x800"
         android:textSize="20sp"
         android:layout_centerInParent="true"
         android:layout_height="wrap_content"
@@ -47,7 +48,7 @@
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:orientation="horizontal"
-        android:layout_height="60dp">
+        android:layout_height="@dimen/y120">
 
         <Button
             android:id="@+id/xq_sc"

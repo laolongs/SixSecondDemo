@@ -28,8 +28,8 @@
             android:layout_height="wrap_content">
             <ImageView
                 android:id="@+id/item1_zuoimage"
-                android:layout_width="180dp"
-                android:layout_height="180dp"
+                android:layout_width="@dimen/x400"
+                android:layout_height="@dimen/y360"
                 android:src="@mipmap/ic_launcher" />
 
 
@@ -39,14 +39,14 @@
                android:orientation="vertical">
                <ImageView
                    android:id="@+id/item1_youimage"
-                   android:layout_width="180dp"
-                   android:layout_height="90dp"
+                   android:layout_width="@dimen/x400"
+                   android:layout_height="@dimen/y180"
                    android:src="@mipmap/ic_launcher" />
 
                <ImageView
                    android:id="@+id/item1_youimage2"
-                   android:layout_width="180dp"
-                   android:layout_height="90dp"
+                   android:layout_width="@dimen/x400"
+                   android:layout_height="@dimen/y180"
                    android:layout_below="@id/item1_youimage"
                    android:src="@mipmap/ic_launcher"/>
            </LinearLayout>

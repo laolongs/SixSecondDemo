@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/y100"
         android:background="@drawable/yuan"
         android:textColor="#fff"
         android:textColorHint="#fff"

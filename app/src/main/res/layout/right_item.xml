@@ -6,9 +6,9 @@
 <com.facebook.drawee.view.SimpleDraweeView
     android:id="@+id/Dsim"
     android:layout_centerHorizontal="true"
-    android:layout_width="120dp"
+    android:layout_width="@dimen/x300"
     fresco:roundedCornerRadius="10dp"
-    android:layout_height="180dp"
+    android:layout_height="@dimen/y400"
     >
 </com.facebook.drawee.view.SimpleDraweeView>
 

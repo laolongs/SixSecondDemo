@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="@dimen/y350"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/sim"
         android:orientation="vertical" >
@@ -45,8 +45,8 @@
 
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/sim"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="@dimen/x350"
+        android:layout_height="@dimen/y350"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true" />

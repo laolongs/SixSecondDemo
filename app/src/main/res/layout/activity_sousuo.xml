@@ -14,8 +14,8 @@
 
         <ImageView
             android:id="@+id/jt1"
-            android:layout_width="40dp"
-            android:layout_height="59dp"
+            android:layout_width="@dimen/x80"
+            android:layout_height="@dimen/y108"
             android:src="@drawable/fh"
             android:textSize="30dp"
             android:layout_marginLeft="10dp"/>
@@ -49,7 +49,7 @@
         android:orientation="horizontal">
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="@dimen/y60"
             android:textSize="10dp"
             android:layout_marginLeft="20dp"
             android:text="劳力士"
@@ -57,7 +57,7 @@
             android:background="@drawable/lisisousuo"/>
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="@dimen/y60"
             android:textSize="10dp"
             android:layout_marginLeft="20dp"
             android:text="男童打底裤加绒"
@@ -65,7 +65,7 @@
             android:background="@drawable/lisisousuo"/>
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="30dp"
+            android:layout_height="@dimen/y60"
             android:textSize="10dp"
             android:layout_marginLeft="20dp"
             android:text="大裤衩子"
@@ -83,7 +83,7 @@
         />
     <Button
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
+        android:layout_height="@dimen/y60"
         android:textSize="10dp"
         android:layout_marginLeft="20dp"
         android:text="男童打底裤加绒"

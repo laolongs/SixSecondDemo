@@ -18,8 +18,8 @@
 
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/car_sd"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="@dimen/x380"
+        android:layout_height="@dimen/y380"
         fresco:roundedCornerRadius="10dp"/>
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,7 +34,7 @@
                 android:gravity="center"
                 android:id="@+id/car_title"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="@dimen/y200"
                 android:textSize="18sp"
                 android:textColor="#000"
                 android:text="描述" />
@@ -43,7 +43,7 @@
                 android:layout_width="match_parent"
                 android:textColor="#f00"
                 android:layout_marginLeft="30dp"
-                android:layout_height="20dp"
+                android:layout_height="@dimen/y40"
                 android:text="¥3000.00" />
         </LinearLayout>
         <LinearLayout
@@ -53,8 +53,8 @@
 
             <ImageView
                 android:id="@+id/car_del"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="@dimen/x50"
+                android:layout_height="@dimen/y50"
                 android:src="@drawable/shopcart_minus_grey" />
 
             <TextView
@@ -71,8 +71,8 @@
 
             <ImageView
                 android:id="@+id/car_add"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="@dimen/x50"
+                android:layout_height="@dimen/y50"
                 android:layout_marginLeft="5dp"
                 android:src="@drawable/shopcart_add_red" />
 
