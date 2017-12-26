@@ -1,19 +1,20 @@
 package com.example.sixseconddemo.adapter;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.sixseconddemo.R;
 import com.example.sixseconddemo.bean.showAddressBean;
+import com.example.sixseconddemo.dao.AddDao;
 import com.example.sixseconddemo.utils.OkHttp3Utils;
 
 import java.io.IOException;
@@ -36,8 +37,10 @@ import okhttp3.Response;
 public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.MyViewHolder>{
     Context context;
     List<showAddressBean> listaddress;
-
+    AddDao addDao;
+    boolean flag=false;
     public AddressAdapter(Context context, List<showAddressBean> listaddress) {
+        addDao=new AddDao(context);
         this.context = context;
         this.listaddress = listaddress;
     }
@@ -51,27 +54,44 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
-        holder.tvname.setText(listaddress.get(position).getConsignee());
-        holder.tvphone.setText(listaddress.get(position).getPhone());
-        holder.tvmessage.setText(listaddress.get(position).getAddr());
-        holder.itemcheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        final showAddressBean bean = listaddress.get(position);
+        ContentValues values=new ContentValues();
+        values.put("addid",bean.getId()+"");
+        values.put("adduserid",bean.getUserId()+"");
+        values.put("consignee",bean.getConsignee());
+        values.put("phone",bean.getPhone());
+        values.put("addr",bean.getAddr());
+        values.put("zipCode",bean.getZipCode());
+        addDao.insertadd(values);
+        holder.itemcheckbox.setChecked(bean.isIsDefault());
+        holder.tvname.setText(bean.getConsignee());
+        holder.tvphone.setText(bean.getPhone());
+        holder.tvmessage.setText(bean.getAddr());
+        holder.itemcheckbox.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-                   holder.itemcheckbox.setText("已设置为默认");
-                   holder.itemcheckbox.setTextColor(Color.RED);
-                   listaddress.get(position).setIsDefault(true);
-                }else{
-                    holder.itemcheckbox.setText("设为默认");
-                    holder.itemcheckbox.setTextColor(Color.BLACK);
-                    listaddress.get(position).setIsDefault(false);
+            public void onClick(View v) {
+                Toast.makeText(context, "" + position, Toast.LENGTH_SHORT).show();
+                for (int i = 0; i < listaddress.size(); i++) {
+                    if (i!=position){
+//                        holder.itemcheckbox.setText("设为默认");
+//                        holder.itemcheckbox.setTextColor(Color.BLACK);
+                        listaddress.get(i).setIsDefault(false);
+                    }else{
+//                        holder.itemcheckbox.setText("已设置为默认");
+//                        holder.itemcheckbox.setTextColor(Color.RED);
+                        listaddress.get(i).setIsDefault(true);
+                    }
                 }
+                setAddress();
+                notifyDataSetChanged();
             }
+
         });
+
         holder.tvdel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String id = listaddress.get(position).getId()+"";
+                final String id = listaddress.get(position).getId()+"";
                 String token="a918d4c8-4361-471f-b1a7-48648165274b";
                 final Map<String, String> map = new HashMap<>();
                 map.put("id",id);
@@ -94,6 +114,7 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.MyViewHo
                                     }
                                 });
                                 listaddress.remove(position);
+                                addDao.delete(id);
                                 notifyDataSetChanged();
                             }
                         })
@@ -111,7 +132,21 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.MyViewHo
     public int getItemCount() {
         return listaddress==null?0:listaddress.size();
     }
+    public void setAddress(){
+        for (int i = 0; i < listaddress.size(); i++) {
+            showAddressBean bean = listaddress.get(i);
 
+            if(bean.isIsDefault()){
+                ContentValues values=new ContentValues();
+                values.put("isDefault","1");
+                addDao.update(values,bean.getUserId()+"");
+            }else{
+                ContentValues values=new ContentValues();
+                values.put("isDefault","0");
+                addDao.update(values,bean.getUserId()+"");
+            }
+        }
+    }
     class MyViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.tvname)
         TextView tvname;

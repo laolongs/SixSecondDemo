@@ -25,6 +25,15 @@ public class showAddressBean {
     private String addr;
     private String zipCode;
     private boolean isDefault;
+    private String ischecked;
+
+    public String getIschecked() {
+        return ischecked;
+    }
+
+    public void setIschecked(String ischecked) {
+        this.ischecked = ischecked;
+    }
 
     public int getId() {
         return id;

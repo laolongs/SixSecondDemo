@@ -214,19 +214,19 @@ public class CarAdatper extends RecyclerView.Adapter<CarAdatper.ViewHolder> {
         return priceAndNum;
     }
     public void select(){
-        int a=0;
-        for (int i = 0; i < list.size(); i++) {
-            CarBean bean = list.get(i);
-            if(bean.isChecked()){
-                a++;
-                ContentValues values=new ContentValues();
-                values.put("flag","1");
-                dao.update(values,bean.getUserid());
-            }else{
-                ContentValues values=new ContentValues();
-                values.put("flag","0");
-                dao.update(values,bean.getUserid());
-            }
+            int a=0;
+            for (int i = 0; i < list.size(); i++) {
+                CarBean bean = list.get(i);
+                if(bean.isChecked()){
+                    a++;
+                    ContentValues values=new ContentValues();
+                    values.put("flag","1");
+                    dao.update(values,bean.getUserid());
+                }else{
+                    ContentValues values=new ContentValues();
+                    values.put("flag","0");
+                    dao.update(values,bean.getUserid());
+                }
         }
         if(a>0){
             Intent intent=new Intent(context, OrderActivity.class);
