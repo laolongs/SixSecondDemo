@@ -10,11 +10,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sixseconddemo.R;
+import com.example.sixseconddemo.bean.EventPass;
 import com.example.sixseconddemo.dao.CarDao;
 import com.example.sixseconddemo.presenter.SCPresenter;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
+
+import org.greenrobot.eventbus.EventBus;
 
 public class XQActivity extends AppCompatActivity{
     TextView xq_tv_title,xq_tv_price;
@@ -61,6 +64,9 @@ public class XQActivity extends AppCompatActivity{
                 values.put("price",price);
                 dao.insert(values);
                 Toast.makeText(XQActivity.this,"加入购物车成功",Toast.LENGTH_SHORT).show();
+                EventPass pass=new EventPass();
+                pass.setChecked(true);
+                EventBus.getDefault().post(pass);
             }
         });
 
@@ -75,6 +81,7 @@ public class XQActivity extends AppCompatActivity{
                 values.put("price",price);
                 dao.insert(values);
                 Toast.makeText(XQActivity.this,"加入购物车成功",Toast.LENGTH_SHORT).show();
+
 
             }
         });

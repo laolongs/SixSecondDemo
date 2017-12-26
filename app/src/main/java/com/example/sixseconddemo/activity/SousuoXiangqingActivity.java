@@ -9,10 +9,8 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.sixseconddemo.R;
 import com.example.sixseconddemo.bean.LaoLiShiBean;
@@ -24,8 +22,10 @@ import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.gson.Gson;
+
 import java.io.IOException;
 import java.util.List;
+
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
@@ -110,7 +110,7 @@ public class SousuoXiangqingActivity extends AppCompatActivity {
 class MyRVadapter extends RecyclerView.Adapter<MyRVadapter.MyViewHodler>{
     OnItemClickLinstener   listener;
     //获取方法的传参值
-    public void setOnItemClickLinstener(OnItemClickLinstener listener) {
+    public void f (OnItemClickLinstener listener) {
         //指定当前的值
         this.listener = listener;
     }
