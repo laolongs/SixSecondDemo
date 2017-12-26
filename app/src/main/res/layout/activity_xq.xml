@@ -7,21 +7,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.sixseconddemo.activity.XQActivity">
+
     <TextView
         android:id="@+id/tv"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:gravity="center"
-        android:textColor="#ffffff"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:background="#f00"
-        android:textSize="20sp"
-        android:text="商品详情"/>
+        android:gravity="center"
+        android:text="商品详情"
+        android:textColor="#ffffff"
+        android:textSize="20sp" />
+
     <com.facebook.drawee.view.SimpleDraweeView
-      android:layout_marginTop="20dp"
-      android:id="@+id/simD"
-      android:layout_width="500dp"
-      android:layout_centerHorizontal="true"
-      android:layout_height="300dp" />
+        android:id="@+id/simD"
+        android:layout_width="500dp"
+        android:layout_height="300dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tv"
+        android:layout_marginTop="10dp" />
 
     <TextView
         android:id="@+id/xq_tv_title"
