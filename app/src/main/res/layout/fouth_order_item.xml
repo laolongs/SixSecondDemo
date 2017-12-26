@@ -19,6 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/order_main_sdv"
                 android:layout_width="@dimen/x250"
                 android:layout_height="@dimen/y250" />
             <LinearLayout
@@ -26,6 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp">
                 <TextView
+                    android:id="@+id/order_main_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="商品描述"/>
@@ -43,6 +45,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
+                        android:id="@+id/order_main_price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="#f00"
@@ -50,6 +53,7 @@
                         android:textSize="18sp"
                         android:text="价格"/>
                     <TextView
+                        android:id="@+id/order_main_num"
                         android:layout_width="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_height="wrap_content"
@@ -114,6 +118,7 @@
             android:layout_marginLeft="10dp"
             android:text="买家留言："/>
         <EditText
+            android:editable="false"
             android:layout_width="wrap_content"
             android:layout_marginLeft="100dp"
             android:layout_height="wrap_content"
@@ -128,6 +133,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
+            android:id="@+id/order_main_nums"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
@@ -135,6 +141,7 @@
             android:layout_marginRight="60dp"
             android:text="共1件商品 小计："/>
         <TextView
+            android:id="@+id/order_main_prices"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
