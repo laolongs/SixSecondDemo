@@ -71,6 +71,7 @@ public class FragmentFouth extends Fragment {
     }
 
     private void initConfig() {
+//        fouthFootCk.setChecked(false);
         fouthHeadBj.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -138,6 +139,7 @@ public class FragmentFouth extends Fragment {
     @Subscribe
     public void EventBusData(EventPass pass) {
        if(pass.isChecked()){
+           fouthFootCk.setChecked(false);
            adatper.getData();
            adatper.notifyDataSetChanged();
        }

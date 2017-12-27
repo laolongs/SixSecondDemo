@@ -120,7 +120,7 @@ public class FragmentFifth extends Fragment {
 
                 Intent intent = new Intent(getActivity(), LoginActivity.class);
                 startActivity(intent);
-
+                getActivity().finish();
             }
         });
     }
@@ -146,12 +146,15 @@ public class FragmentFifth extends Fragment {
                         switch (position){
                             case 0:
                                 startActivity(new Intent(getActivity(), MyDingDanActivity.class));
+                                getActivity().finish();
                                 break;
                             case 1:
                                 startActivity(new Intent(getActivity(), SouCangShowActivity.class));
+                                getActivity().finish();
                                 break;
                             case 2:
                                 startActivity(new Intent(getActivity(), AddressActivity.class));
+                                getActivity().finish();
                                 break;
                         }
                     }else{
