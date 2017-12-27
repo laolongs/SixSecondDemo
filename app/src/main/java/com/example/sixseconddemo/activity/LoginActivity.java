@@ -4,6 +4,8 @@ import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.CardView;
@@ -20,6 +22,13 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class LoginActivity extends BaseActivity<loginpresenter> implements ILoginview{
+    Handler handler=new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            finish();
+        }
+    };
     @BindView(R.id.et_username)
     EditText etUsername;
     @BindView(R.id.et_password)
@@ -50,6 +59,13 @@ public class LoginActivity extends BaseActivity<loginpresenter> implements ILogi
         switch (view.getId()) {
             case R.id.bt_go:
                 presenter.getlogin();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        handler.sendEmptyMessage(0);
+                    }
+                },2000);
+
 //                Explode explode = new Explode();
 //                explode.setDuration(500);
 //                getWindow().setExitTransition(explode);
@@ -93,5 +109,11 @@ public class LoginActivity extends BaseActivity<loginpresenter> implements ILogi
     @Override
     public String getPassword() {
         return etPassword.getText().toString();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        handler.removeMessages(0);
     }
 }

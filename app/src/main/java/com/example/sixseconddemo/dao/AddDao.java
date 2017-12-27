@@ -27,14 +27,14 @@ public class AddDao {
         db.insert(TABLEADD,null,values);
         db.close();
     }
-    public void delete(String adduserId){
+    public void delete(String addid){
         SQLiteDatabase db = helper.getWritableDatabase();
-        db.delete(TABLEADD,"adduserid=?",new String[]{adduserId});
+        db.delete(TABLEADD,"addid=?",new String[]{addid});
         db.close();
     }
-    public void update(ContentValues values,String adduserId){
+    public void update(ContentValues values,String addid){
         SQLiteDatabase db = helper.getWritableDatabase();
-        db.update(TABLEADD,values,"adduserid=?",new String[]{adduserId});
+        db.update(TABLEADD,values,"addid=?",new String[]{addid});
         db.close();
     }
     public List<showAddressBean> queryAlladd(){
@@ -84,7 +84,9 @@ public class AddDao {
             bean.setIschecked(isDefault);
             list.add(bean);
         }
+        cursor.close();
         db.close();
+
         return list;
     }
 }

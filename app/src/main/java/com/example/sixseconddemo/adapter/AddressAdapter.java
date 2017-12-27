@@ -38,13 +38,13 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.MyViewHo
     Context context;
     List<showAddressBean> listaddress;
     AddDao addDao;
-    boolean flag=false;
+    int  flag=0;
+    String isDefault="1";
     public AddressAdapter(Context context, List<showAddressBean> listaddress) {
         addDao=new AddDao(context);
         this.context = context;
         this.listaddress = listaddress;
     }
-
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = View.inflate(context, R.layout.addressitems, null);
@@ -54,7 +54,9 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
+
         final showAddressBean bean = listaddress.get(position);
+
         ContentValues values=new ContentValues();
         values.put("addid",bean.getId()+"");
         values.put("adduserid",bean.getUserId()+"");
@@ -63,7 +65,16 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.MyViewHo
         values.put("addr",bean.getAddr());
         values.put("zipCode",bean.getZipCode());
         addDao.insertadd(values);
-        holder.itemcheckbox.setChecked(bean.isIsDefault());
+//        if(flag==0){
+//            listaddress.get(0).setIsDefault(true);
+//            setAddress();
+            holder.itemcheckbox.setChecked(bean.isIsDefault());
+//        }
+// else{
+//            List<showAddressBean> queryadd = addDao.queryadd(isDefault);
+//            holder.itemcheckbox.setChecked(queryadd.get(0).isIsDefault());
+//        }
+//        flag++;
         holder.tvname.setText(bean.getConsignee());
         holder.tvphone.setText(bean.getPhone());
         holder.tvmessage.setText(bean.getAddr());
@@ -80,10 +91,12 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.MyViewHo
 //                        holder.itemcheckbox.setText("已设置为默认");
 //                        holder.itemcheckbox.setTextColor(Color.RED);
                         listaddress.get(i).setIsDefault(true);
+
                     }
                 }
                 setAddress();
                 notifyDataSetChanged();
+
             }
 
         });
@@ -134,16 +147,17 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.MyViewHo
     }
     public void setAddress(){
         for (int i = 0; i < listaddress.size(); i++) {
-            showAddressBean bean = listaddress.get(i);
 
+            showAddressBean bean = listaddress.get(i);
+            Log.i("------bean--------", "setAddress: "+bean.isIsDefault());
             if(bean.isIsDefault()){
                 ContentValues values=new ContentValues();
                 values.put("isDefault","1");
-                addDao.update(values,bean.getUserId()+"");
+                addDao.update(values,bean.getId()+"");
             }else{
                 ContentValues values=new ContentValues();
                 values.put("isDefault","0");
-                addDao.update(values,bean.getUserId()+"");
+                addDao.update(values,bean.getId()+"");
             }
         }
     }
