@@ -68,4 +68,7 @@ public interface HomeApi {
     @FormUrlEncoded
     @POST("course_api/addr/del")
     Observable<addressSuccessBean> getdelDress(@FieldMap Map<String,String> map);
+    @FormUrlEncoded
+    @POST("course_api/addr/update")
+    Observable<addressSuccessBean> getupdateDress(@FieldMap Map<String,String> map);
 }
