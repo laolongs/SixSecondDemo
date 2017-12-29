@@ -1,5 +1,7 @@
 package com.example.sixseconddemo.presenter;
 
+import android.util.Log;
+
 import com.example.sixseconddemo.bean.OrderlistBean;
 import com.example.sixseconddemo.model.IOrderModelList;
 import com.example.sixseconddemo.model.OrderModelList;
@@ -34,7 +36,7 @@ public class OrderListPresenter implements IPresenter<IOrderListView> {
 
                    @Override
                    public void onError(Throwable e) {
-
+                       Log.i("----showOrderList-----", "onError: "+e.getMessage());
                    }
 
                    @Override
