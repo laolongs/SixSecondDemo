@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -100,6 +101,7 @@ public class FragmentFouth extends Fragment {
 
                 if(name.equals("去结算")){
                     if(userid!=null){
+                        Log.i("---------userid---", "onClick: "+userid);
                         adatper.select();
                     }else{
                         Toast.makeText(getActivity(), "请先登录", Toast.LENGTH_SHORT).show();

@@ -42,7 +42,7 @@ public class OrderActivity extends BaseActivity<OrderPresenter> {
         setContentView(R.layout.activity_order);
         ButterKnife.bind(this);
         initfirst();
-//        initData();
+        initData();
 
     }
 
@@ -60,19 +60,25 @@ public class OrderActivity extends BaseActivity<OrderPresenter> {
     }
 
     private void initData() {
-
-        long userid = (long) SharedUtil.getInstances().getValueByKey(this, "userid", null);
-        String itemjson = "";
-        int price = 0;
-        long addrid = 0;
+        String userid = (String) SharedUtil.getInstances().getValueByKey(this, "userid", "");
+        long usid = Long.parseLong(userid);
+        String carJson = adapter.getCarJson();
+         int price = (int) adapter.getPrice();
+        long addrid = adapter.getAddrid();
         String PAY = "alipay";
-        Map<String, Object> map = new HashMap<>();
-        map.put("user_id", userid);
-        map.put("item_json", itemjson);
+       final Map<String, Object> map = new HashMap<>();
+        map.put("user_id", usid);
+        map.put("item_json", carJson);
         map.put("amount", price);
         map.put("addr_id", addrid);
         map.put("pay_channel", PAY);
-        presenter.showOrder(map);
+        map.put("token","a918d4c8-4361-471f-b1a7-48648165274b");
+        orderFootCommit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.showOrder(map);
+            }
+        });
     }
 
     @Override
