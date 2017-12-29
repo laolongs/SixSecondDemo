@@ -1,9 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.example.sixseconddemo.activity.MyDingDanActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="#f00"
+        android:gravity="center"
+        android:id="@+id/ding_header">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingLeft="10dp"
+            android:gravity="center_vertical"
+            android:backgroundTint="#eee"
+            android:textColorHint="#eee"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
+            android:text="我的订单"
+            android:textSize="25sp"
+            android:textColor="#fff"
+            android:id="@+id/ding_head_tv"
+            />
 
-</android.support.constraint.ConstraintLayout>
+    </LinearLayout>
+    <android.support.design.widget.TabLayout
+        android:layout_width="match_parent"
+        android:id="@+id/ding_tab"
+        android:layout_height="wrap_content">
+    </android.support.design.widget.TabLayout>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/ding_vp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v4.view.ViewPager>
+</LinearLayout>

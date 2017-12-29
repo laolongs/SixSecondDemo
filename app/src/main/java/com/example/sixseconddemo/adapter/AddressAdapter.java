@@ -66,8 +66,8 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.MyViewHo
         values.put("zipCode",bean.getZipCode());
         addDao.insertadd(values);
 //        if(flag==0){
-//            listaddress.get(0).setIsDefault(true);
-//            setAddress();
+            listaddress.get(0).setIsDefault(true);
+            setAddress();
             holder.itemcheckbox.setChecked(bean.isIsDefault());
 //        }
 // else{

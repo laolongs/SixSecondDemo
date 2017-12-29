@@ -101,14 +101,7 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
         }
     }
-    public String getPrice(){
-        int price=0;
-        for (int i = 0; i < list.size(); i++) {
-            CarBean bean = list.get(i);
-            price+= Double.parseDouble(bean.getPrice());
-        }
-        return price+"";
-    }
+
 
     @Override
     public int getItemCount() {
@@ -173,5 +166,35 @@ public class OrderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
+    }
+    public double getPrice(){
+        int price=0;
+        for (int i = 0; i < list.size(); i++) {
+            CarBean bean = list.get(i);
+            price+= Double.parseDouble(bean.getPrice());
+        }
+        return price;
+    }
+    public long getAddrid(){
+        return queryadd.get(0).getId();
+    }
+    public String getCarJson(){
+        StringBuffer json=new StringBuffer();
+        json.append("[");
+        for (int i = 0; i < list.size(); i++) {
+            CarBean bean = list.get(i);
+            json.append("{");
+            json.append("ware_id" + ":" + bean.getUserid() + ",");
+            json.append("amount" + ":" + bean.getPrice());
+            if(i==list.size()-1){
+                json.append("}");
+            }else{
+                json.append("},");
+            }
+
+        }
+        json.append("]");
+        Log.i("-------json--", "getCarJson: "+json.toString());
+        return json.toString();
     }
 }
