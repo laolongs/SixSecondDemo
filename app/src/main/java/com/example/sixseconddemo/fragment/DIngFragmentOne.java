@@ -2,7 +2,9 @@ package com.example.sixseconddemo.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,11 +12,14 @@ import android.widget.LinearLayout;
 
 import com.example.sixseconddemo.R;
 import com.example.sixseconddemo.activity.BaseFragment;
+import com.example.sixseconddemo.adapter.MyDingOneAdapter;
 import com.example.sixseconddemo.base.Base;
 import com.example.sixseconddemo.bean.OrderlistBean;
 import com.example.sixseconddemo.presenter.OrderListPresenter;
 import com.example.sixseconddemo.utils.SharedUtil;
 import com.example.sixseconddemo.view.IOrderListView;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,9 +39,10 @@ public class DIngFragmentOne extends BaseFragment<OrderListPresenter> implements
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, savedInstanceState);
         View view = View.inflate(getActivity(), R.layout.ding_fragment_one, null);
         String userid = (String) SharedUtil.getInstances().getValueByKey(getActivity(), "userid", "");
-        int status = 5;
+        int status = 0;
         String token = Base.TOKEN;
         presenter.showOrderList(userid, status, token);
         unbinder = ButterKnife.bind(this, view);
@@ -50,9 +56,13 @@ public class DIngFragmentOne extends BaseFragment<OrderListPresenter> implements
 
     @Override
     public void setOrderListView(OrderlistBean bean) {
-        if(bean!=null){
+        List<OrderlistBean.ItemsBean> list= (List<OrderlistBean.ItemsBean>) bean;
+        Log.i("------setOrderLi-", "setOrderListView: "+list.size());
+        if(list!=null){
             dingOneRl.setVisibility(View.GONE);
-
+            dingOneRcl.setLayoutManager(new LinearLayoutManager(getActivity()));
+            MyDingOneAdapter adapter=new MyDingOneAdapter(list,getActivity());
+            dingOneRcl.setAdapter(adapter);
         }
     }
 
