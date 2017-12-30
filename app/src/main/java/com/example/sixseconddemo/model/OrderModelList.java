@@ -11,7 +11,9 @@ import okhttp3.OkHttpClient;
  */
 
 public class OrderModelList implements IOrderModelList {
-    OkHttpClient client=new OkHttpClient.Builder().build();
+    OkHttpClient client=new OkHttpClient.Builder()
+//            .addNetworkInterceptor(new MyInterceptor())
+            .build();
     @Override
     public OrderAPI serOrderList() {
         OrderAPI setcreate = RetrofitManager.getinstantce(Base.URL, client).setcreate(OrderAPI.class);

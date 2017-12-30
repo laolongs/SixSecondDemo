@@ -15,9 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".MainActivity"
-
-            >
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,12 +29,14 @@
         <activity android:name=".activity.SousuoActivity" />
         <activity android:name=".activity.XQActivity" />
         <activity android:name=".activity.SousuoXiangqingActivity" />
-        <activity android:name=".activity.OrderActivity"
-            android:launchMode="singleTask"/>
+        <activity
+            android:name=".activity.OrderActivity"
+            android:launchMode="singleTask" />
         <activity android:name=".activity.SouCangShowActivity" />
-        <activity android:name=".activity.AddressActivity"/>
+        <activity android:name=".activity.AddressActivity" />
         <activity android:name=".activity.MyDingDanActivity" />
-        <activity android:name=".activity.AddAddressActivity"></activity>
+        <activity android:name=".activity.AddAddressActivity" />
+        <activity android:name=".activity.PayActivity"></activity>
     </application>
 
 </manifest>

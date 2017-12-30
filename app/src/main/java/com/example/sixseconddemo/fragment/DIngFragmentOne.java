@@ -19,6 +19,7 @@ import com.example.sixseconddemo.presenter.OrderListPresenter;
 import com.example.sixseconddemo.utils.SharedUtil;
 import com.example.sixseconddemo.view.IOrderListView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -35,14 +36,14 @@ public class DIngFragmentOne extends BaseFragment<OrderListPresenter> implements
     @BindView(R.id.ding_one_rcl)
     RecyclerView dingOneRcl;
     Unbinder unbinder;
-
+    List<OrderlistBean.ItemsBean> list=new ArrayList<>();
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         View view = View.inflate(getActivity(), R.layout.ding_fragment_one, null);
         String userid = (String) SharedUtil.getInstances().getValueByKey(getActivity(), "userid", "");
-        int status = 0;
+        int status = 3;
         String token = Base.TOKEN;
         presenter.showOrderList(userid, status, token);
         unbinder = ButterKnife.bind(this, view);
@@ -55,10 +56,15 @@ public class DIngFragmentOne extends BaseFragment<OrderListPresenter> implements
     }
 
     @Override
-    public void setOrderListView(OrderlistBean bean) {
-        List<OrderlistBean.ItemsBean> list= (List<OrderlistBean.ItemsBean>) bean;
-        Log.i("------setOrderLi-", "setOrderListView: "+list.size());
-        if(list!=null){
+    public void setOrderListView(List<OrderlistBean> bean) {
+//        List<OrderlistBean.ItemsBean> list=  bean;
+        for (int i = 0; i < bean.size(); i++) {
+            for (int j = 0; j < bean.get(i).getItems().size(); j++) {
+                list.add(bean.get(i).getItems().get(j));
+            }
+        }
+        Log.i("------setOrderLi-", "setOrderListView: "+bean.size());
+        if(bean!=null){
             dingOneRl.setVisibility(View.GONE);
             dingOneRcl.setLayoutManager(new LinearLayoutManager(getActivity()));
             MyDingOneAdapter adapter=new MyDingOneAdapter(list,getActivity());

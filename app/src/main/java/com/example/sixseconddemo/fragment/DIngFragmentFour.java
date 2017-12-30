@@ -6,7 +6,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+
+import com.example.sixseconddemo.R;
 
 /**
  * Created by 郭金龙 on 2017/12/29.
@@ -16,8 +17,8 @@ public class DIngFragmentFour extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        TextView textView=new TextView(getActivity());
-        textView.setText("44");
-        return textView;
+        super.onCreateView(inflater, container, savedInstanceState);
+        View view = View.inflate(getActivity(), R.layout.ding_fragment_one, null);
+        return view;
     }
 }
