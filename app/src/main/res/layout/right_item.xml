@@ -7,6 +7,7 @@
     android:id="@+id/Dsim"
     android:layout_centerHorizontal="true"
     android:layout_width="@dimen/x300"
+    android:layout_marginLeft="10dp"
     fresco:roundedCornerRadius="10dp"
     android:layout_height="@dimen/y400"
     >

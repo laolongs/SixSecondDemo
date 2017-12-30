@@ -8,9 +8,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import com.example.sixseconddemo.R;
 import com.example.sixseconddemo.activity.BaseFragment;
+import com.example.sixseconddemo.activity.SousuoActivity;
 import com.example.sixseconddemo.activity.XQActivity;
 import com.example.sixseconddemo.adapter.Lv_RT_adapter;
 import com.example.sixseconddemo.adapter.SecodenRecyAdapter;
@@ -34,6 +36,7 @@ public class FragmentSecond extends BaseFragment<SecondPresenter>implements Seco
     @BindView(R.id.second_recy)
     RecyclerView second_recy;
     SecodenRecyAdapter adapter;
+    EditText editText;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -41,6 +44,13 @@ public class FragmentSecond extends BaseFragment<SecondPresenter>implements Seco
         view = View.inflate(getActivity(), R.layout.fragsecond,null);
         unbinder = ButterKnife.bind(this, view);
         presenter.showBestscond();
+        editText=view.findViewById(R.id.editText);
+        editText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(),SousuoActivity.class));
+            }
+        });
         return view;
     }
     @Override

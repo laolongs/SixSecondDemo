@@ -18,8 +18,8 @@
 
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/car_sd"
-        android:layout_width="@dimen/x380"
-        android:layout_height="@dimen/y380"
+        android:layout_width="@dimen/x200"
+        android:layout_height="@dimen/y300"
         fresco:roundedCornerRadius="10dp"/>
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,7 +35,7 @@
                 android:id="@+id/car_title"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/y200"
-                android:textSize="18sp"
+
                 android:textColor="#000"
                 android:text="描述" />
             <TextView
