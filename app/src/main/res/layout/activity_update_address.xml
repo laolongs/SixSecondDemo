@@ -6,11 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.sixseconddemo.activity.UpdateAddressActivity">
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -54,6 +50,13 @@
             android:id="@+id/save"
             />
     </RelativeLayout>
+       <LinearLayout
+           android:layout_centerInParent="true"
+           android:padding="30dp"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+           >
     <LinearLayout
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
@@ -122,6 +125,23 @@
             android:background="@null"
             android:id="@+id/ets"/>
     </LinearLayout>
+           <RelativeLayout
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:layout_marginTop="20dp">
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="设置默认"
+                   android:textSize="17sp"
+                   />
+               <CheckBox
+                   android:layout_alignParentRight="true"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:id="@+id/cbitem"
+                   />
+           </RelativeLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"

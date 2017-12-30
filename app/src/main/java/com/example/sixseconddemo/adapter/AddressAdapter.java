@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -11,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.sixseconddemo.R;
 import com.example.sixseconddemo.activity.UpdateAddressActivity;
@@ -56,21 +56,23 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
-
         final showAddressBean bean = listaddress.get(position);
-
-        ContentValues values=new ContentValues();
-        values.put("addid",bean.getId()+"");
-        values.put("adduserid",bean.getUserId()+"");
-        values.put("consignee",bean.getConsignee());
-        values.put("phone",bean.getPhone());
-        values.put("addr",bean.getAddr());
-        values.put("zipCode",bean.getZipCode());
-        addDao.insertadd(values);
+//        if(listaddress.get(position).getIschecked().equals("true")){
+//            holder.itemcheckbox.isChecked();
+//        }
+        Log.i("---che----", "onBindViewHolder: "+bean.isIsDefault());
+//        ContentValues values=new ContentValues();
+//        values.put("addid",bean.getId()+"");
+//        values.put("adduserid",bean.getUserId()+"");
+//        values.put("consignee",bean.getConsignee());
+//        values.put("phone",bean.getPhone());
+//        values.put("addr",bean.getAddr());
+//        values.put("zipCode",bean.getZipCode());
+//        addDao.insertadd(values);
 //        if(flag==0){
-            listaddress.get(0).setIsDefault(true);
-            setAddress();
-            holder.itemcheckbox.setChecked(bean.isIsDefault());
+//            listaddress.get(0).setIsDefault(true);
+//            setAddress();
+//            holder.itemcheckbox.setChecked(bean.isIsDefault());
 //        }
 // else{
 //            List<showAddressBean> queryadd = addDao.queryadd(isDefault);
@@ -80,28 +82,75 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.MyViewHo
         holder.tvname.setText(bean.getConsignee());
         holder.tvphone.setText(bean.getPhone());
         holder.tvmessage.setText(bean.getAddr());
+        holder.itemcheckbox.setChecked(bean.isIsDefault());
+        if(holder.itemcheckbox.isChecked()){
+            holder.itemcheckbox.setText("已经默认");
+            holder.itemcheckbox.setTextColor(Color.RED);
+        }else{
+            holder.itemcheckbox.setText("点击设置为默认");
+            holder.itemcheckbox.setTextColor(Color.BLACK);
+        }
         holder.itemcheckbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "" + position, Toast.LENGTH_SHORT).show();
                 for (int i = 0; i < listaddress.size(); i++) {
                     if (i!=position){
-//                        holder.itemcheckbox.setText("设为默认");
-//                        holder.itemcheckbox.setTextColor(Color.BLACK);
                         listaddress.get(i).setIsDefault(false);
                     }else{
-//                        holder.itemcheckbox.setText("已设置为默认");
-//                        holder.itemcheckbox.setTextColor(Color.RED);
                         listaddress.get(i).setIsDefault(true);
-
                     }
                 }
-                setAddress();
-                notifyDataSetChanged();
+                if(holder.itemcheckbox.isChecked()){
+                    Map<String, String> mapup = new HashMap<>();
+                    holder.itemcheckbox.setText("已经默认");
+                    holder.itemcheckbox.setTextColor(Color.RED);
+                    mapup.put("id", String.valueOf(listaddress.get(position).getId()));
+                    mapup.put("is_default","true");
+                    mapup.put("token","a918d4c8-4361-471f-b1a7-48648165274b");
+                    mapup.put("consignee",listaddress.get(position).getConsignee());
+                    mapup.put("phone",listaddress.get(position).getPhone());
+                    mapup.put("zip_code",listaddress.get(position).getZipCode());
+                    mapup.put("addr",listaddress.get(position).getAddr());
+                    OkHttp3Utils.doPost("http://112.124.22.238:8081/course_api/addr/update", mapup, new Callback() {
+                        @Override
+                        public void onFailure(Call call, IOException e) {
 
+                        }
+
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException {
+                            Log.i("--++++++++success", "onResponse: "+"11111");
+                        }
+                    });
+                }else if(holder.itemcheckbox.isChecked()==false){
+                    Map<String, String> mapup2 = new HashMap<>();
+                    holder.itemcheckbox.setText("点击设置为默认");
+                    holder.itemcheckbox.setTextColor(Color.BLACK);
+                    mapup2.put("id", String.valueOf(listaddress.get(position).getId()));
+                    mapup2.put("is_default","false");
+                    mapup2.put("token","a918d4c8-4361-471f-b1a7-48648165274b");
+                    mapup2.put("consignee",listaddress.get(position).getConsignee());
+                    mapup2.put("phone",listaddress.get(position).getPhone());
+                    mapup2.put("zip_code",listaddress.get(position).getZipCode());
+                    mapup2.put("addr",listaddress.get(position).getAddr());
+                    OkHttp3Utils.doPost("http://112.124.22.238:8081/course_api/addr/update", mapup2, new Callback() {
+                        @Override
+                        public void onFailure(Call call, IOException e) {
+
+                        }
+
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException {
+                            Log.i("--++++++++success", "onResponse: "+"222222");
+                        }
+                    });
+                }
+//                setAddress();
+                notifyDataSetChanged();
             }
 
         });
+
         holder.tvbj.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
