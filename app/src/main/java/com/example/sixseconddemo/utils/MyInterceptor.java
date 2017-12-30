@@ -19,7 +19,7 @@ public class MyInterceptor implements Interceptor {
     public Response intercept(Chain chain) throws IOException {
         Request request = chain.request();
         Response proceed = chain.proceed(request);
-        Log.i("---------", "intercept: "+proceed.toString());
-        return null;
+        Log.i("----intercept-----", "intercept: "+proceed.toString());
+        return proceed;
     }
 }

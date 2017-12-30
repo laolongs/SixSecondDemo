@@ -8,6 +8,7 @@ import com.example.sixseconddemo.model.OrderModelList;
 import com.example.sixseconddemo.view.IOrderListView;
 
 import java.lang.ref.SoftReference;
+import java.util.List;
 
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
@@ -28,7 +29,7 @@ public class OrderListPresenter implements IPresenter<IOrderListView> {
        model.serOrderList().getOrderList(userid,status,token)
                .subscribeOn(Schedulers.io())
                .observeOn(AndroidSchedulers.mainThread())
-               .subscribe(new Observer<OrderlistBean>() {
+               .subscribe(new Observer<List<OrderlistBean>>() {
                    @Override
                    public void onCompleted() {
 
@@ -40,7 +41,8 @@ public class OrderListPresenter implements IPresenter<IOrderListView> {
                    }
 
                    @Override
-                   public void onNext(OrderlistBean orderlistBean) {
+                   public void onNext(List<OrderlistBean> orderlistBean) {
+                       Log.i("----showOrderList-----", "onNext: "+orderlistBean.toString());
                         reference.get().setOrderListView(orderlistBean);
                    }
                });

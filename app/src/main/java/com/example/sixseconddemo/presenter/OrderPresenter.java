@@ -1,5 +1,8 @@
 package com.example.sixseconddemo.presenter;
 
+import android.content.Context;
+import android.widget.Toast;
+
 import com.example.sixseconddemo.bean.OrderBean;
 import com.example.sixseconddemo.model.IOrderModel;
 import com.example.sixseconddemo.model.OrderModel;
@@ -15,8 +18,11 @@ import rx.schedulers.Schedulers;
  */
 
 public class OrderPresenter implements IPresenter {
+    String flag="";
     public IOrderModel model;
-    public OrderPresenter(){
+    Context context;
+    public OrderPresenter(Context context){
+        this.context=context;
         model=new OrderModel();
     }
     public void showOrder(Map map){
@@ -29,15 +35,16 @@ public class OrderPresenter implements IPresenter {
 
                    @Override
                    public void onError(Throwable e) {
+                       Toast.makeText(context, "订单生成失败", Toast.LENGTH_SHORT).show();
 
                    }
 
                    @Override
                    public void onNext(OrderBean orderBean) {
+                       Toast.makeText(context, "订单生成成功", Toast.LENGTH_SHORT).show();
 
                    }
                });
-
     }
     @Override
     public void attch(Object view) {

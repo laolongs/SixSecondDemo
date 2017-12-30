@@ -3,6 +3,7 @@ package com.example.sixseconddemo.api;
 import com.example.sixseconddemo.bean.OrderBean;
 import com.example.sixseconddemo.bean.OrderlistBean;
 
+import java.util.List;
 import java.util.Map;
 
 import retrofit2.http.FieldMap;
@@ -21,5 +22,5 @@ public interface OrderAPI {
     @FormUrlEncoded
     Observable<OrderBean> getOrder(@FieldMap Map<String,Object> map);
     @GET("order/list")
-    Observable<OrderlistBean> getOrderList(@Query("user_id") String userid,@Query("status") int status,@Query("token") String token);
+    Observable<List<OrderlistBean>> getOrderList(@Query("user_id") String userid, @Query("status") int status, @Query("token") String token);
 }

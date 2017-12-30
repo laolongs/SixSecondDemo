@@ -2,6 +2,7 @@ package com.example.sixseconddemo.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -50,6 +51,7 @@ public class MyDingOneAdapter extends RecyclerView.Adapter<MyDingOneAdapter.View
 
     @Override
     public int getItemCount() {
+        Log.i("----getItemCount----", "getItemCount: "+list.size());
         return list == null ? 0 : list.size();
     }
 

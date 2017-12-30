@@ -177,12 +177,13 @@
             android:background="@drawable/shopcart_add_btn"
             android:text="卖了换钱"/>
         <TextView
+            android:id="@+id/ding_one_tvoperation"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
             android:background="@drawable/shopcart_add_btn"
-            android:text="追加评价"/>
+            android:text="评价"/>
 
     </LinearLayout>
 </RelativeLayout>

@@ -36,6 +36,7 @@
         <activity android:name=".activity.AddressActivity" />
         <activity android:name=".activity.MyDingDanActivity" />
         <activity android:name=".activity.AddAddressActivity" />
+        <activity android:name=".activity.PayActivity"></activity>
         <activity android:name=".activity.UpdateAddressActivity"></activity>
     </application>
 
