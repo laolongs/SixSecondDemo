@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
-        android:id="@+id/order_main"
+        android:id="@+id/ding_main"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -18,15 +18,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <com.facebook.drawee.view.SimpleDraweeView
-                android:id="@+id/order_main_sdv"
-                android:layout_width="@dimen/x250"
-                android:layout_height="@dimen/y250" />
+                android:id="@+id/ding_one_sdv"
+                android:layout_width="100dp"
+                android:layout_height="100dp" />
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
+                android:layout_marginLeft="10dp"
                 android:layout_height="100dp">
                 <TextView
-                    android:id="@+id/order_main_title"
+                    android:id="@+id/ding_one_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="商品描述"/>
@@ -44,7 +45,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
-                        android:id="@+id/order_main_price"
+                        android:id="@+id/ding_one_price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="#f00"
@@ -52,7 +53,7 @@
                         android:textSize="18sp"
                         android:text="价格"/>
                     <TextView
-                        android:id="@+id/order_main_num"
+                        android:id="@+id/ding_one_num"
                         android:layout_width="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_height="wrap_content"
@@ -64,8 +65,8 @@
         </LinearLayout>
     </LinearLayout>
     <RelativeLayout
-        android:id="@+id/order_main1"
-        android:layout_below="@+id/order_main"
+        android:id="@+id/ding_main1"
+        android:layout_below="@+id/ding_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
@@ -82,9 +83,9 @@
             android:text="快递 免邮 >"/>
     </RelativeLayout>
     <RelativeLayout
-        android:id="@+id/order_main2"
+        android:id="@+id/ding_main2"
         android:layout_marginTop="10dp"
-        android:layout_below="@+id/order_main1"
+        android:layout_below="@+id/ding_main1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
@@ -104,35 +105,34 @@
             android:text="卖家送，确认收货前退货可赔 >"/>
     </RelativeLayout>
     <RelativeLayout
-        android:id="@+id/order_main3"
+        android:id="@+id/ding_main3"
         android:layout_marginTop="10dp"
-        android:layout_below="@+id/order_main2"
+        android:layout_below="@+id/ding_main2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:textSize="18sp"
             android:layout_marginLeft="10dp"
-            android:text="买家留言："/>
-        <EditText
+            android:text="保险服务"/>
+        <TextView
             android:editable="false"
             android:layout_width="wrap_content"
-            android:layout_marginLeft="100dp"
+            android:layout_alignParentRight="true"
             android:layout_height="wrap_content"
             android:textSize="15sp"
             android:layout_marginRight="10dp"
-            android:hint="选填:填写内容已和卖家协商确认"/>
+            android:text="￥0.00"/>
     </RelativeLayout>
     <RelativeLayout
-        android:id="@+id/order_main4"
+        android:id="@+id/ding_main4"
         android:layout_marginTop="10dp"
-        android:layout_below="@+id/order_main3"
+        android:layout_below="@+id/ding_main3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
-            android:id="@+id/order_main_nums"
+            android:id="@+id/ding_nums"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
@@ -140,7 +140,7 @@
             android:layout_marginRight="60dp"
             android:text="共1件商品 小计："/>
         <TextView
-            android:id="@+id/order_main_prices"
+            android:id="@+id/ding_prices"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -149,4 +149,40 @@
             android:layout_marginLeft="10dp"
             android:text="￥ 89.00"/>
     </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/ding_main5"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_below="@+id/ding_main4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+       <TextView
+           android:layout_width="0dp"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:gravity="center"
+           android:text="更多"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="@drawable/shopcart_add_btn"
+            android:text="查看物流"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="@drawable/shopcart_add_btn"
+            android:text="卖了换钱"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="@drawable/shopcart_add_btn"
+            android:text="追加评价"/>
+
+    </LinearLayout>
 </RelativeLayout>

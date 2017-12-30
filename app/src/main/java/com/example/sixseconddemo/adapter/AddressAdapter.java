@@ -3,6 +3,7 @@ package com.example.sixseconddemo.adapter;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sixseconddemo.R;
+import com.example.sixseconddemo.activity.UpdateAddressActivity;
 import com.example.sixseconddemo.bean.showAddressBean;
 import com.example.sixseconddemo.dao.AddDao;
 import com.example.sixseconddemo.utils.OkHttp3Utils;
@@ -100,7 +102,26 @@ public class AddressAdapter extends RecyclerView.Adapter<AddressAdapter.MyViewHo
             }
 
         });
+        holder.tvbj.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String zipCode = listaddress.get(position).getZipCode();
+                String id = listaddress.get(position).getId()+"";
+                String addr = listaddress.get(position).getAddr();
+                String consignee = listaddress.get(position).getConsignee();
+                String ischecked = listaddress.get(position).getIschecked();
+                String phone = listaddress.get(position).getPhone();
+                Intent intent = new Intent(context, UpdateAddressActivity.class);
+                intent.putExtra("id",id);
+                intent.putExtra("addr",addr);
+                intent.putExtra("consignee",consignee);
+                intent.putExtra("ischecked",ischecked);
+                intent.putExtra("phone",phone);
+                intent.putExtra("zipCode",zipCode);
+                context.startActivity(intent);
 
+            }
+        });
         holder.tvdel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
