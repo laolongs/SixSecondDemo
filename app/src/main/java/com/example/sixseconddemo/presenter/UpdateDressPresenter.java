@@ -1,8 +1,11 @@
 package com.example.sixseconddemo.presenter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.example.sixseconddemo.activity.AddressActivity;
 import com.example.sixseconddemo.bean.addressSuccessBean;
 import com.example.sixseconddemo.model.IupdateDressModel;
 import com.example.sixseconddemo.model.UpdateDressModel;
@@ -26,7 +29,7 @@ public class UpdateDressPresenter implements IPresenter<IupdateAddressView> {
     IupdateDressModel model;
     Context context;
     SoftReference<IupdateAddressView> so;
-    public UpdateDressPresenter(IupdateAddressView view) {
+    public UpdateDressPresenter(IupdateAddressView view,Context context) {
          attch(view);
          model=new UpdateDressModel();
         this.context=context;
@@ -64,6 +67,14 @@ public class UpdateDressPresenter implements IPresenter<IupdateAddressView> {
                     @Override
                     public void onNext(addressSuccessBean addressSuccessBean) {
                         Log.i("update-----success", "onNext: ");
+                        int status = addressSuccessBean.getStatus();
+                        if(status==1){
+                            Toast.makeText(context,"successful",Toast.LENGTH_SHORT).show();
+                            context.startActivity(new Intent(context, AddressActivity.class));
+                        }else{
+                            Toast.makeText(context,addressSuccessBean.getMessage(),Toast.LENGTH_SHORT).show();
+                            return;
+                        }
                     }
                 });
     }
