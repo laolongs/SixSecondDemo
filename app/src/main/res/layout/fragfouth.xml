@@ -44,13 +44,13 @@
             android:id="@+id/fouth_head_bj"
             android:layout_marginRight="15dp"/>
     </LinearLayout>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/fouth_recy"
-        android:layout_below="@+id/searchedit_header"
-        android:layout_above="@+id/searchedit_foot"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </android.support.v7.widget.RecyclerView>
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/searchedit_header"></android.support.v7.widget.RecyclerView>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/y120"

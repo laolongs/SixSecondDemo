@@ -3,6 +3,8 @@ package com.example.sixseconddemo.api;
 import com.example.sixseconddemo.bean.BestSellerBean;
 import com.example.sixseconddemo.bean.FenLeiRight;
 import com.example.sixseconddemo.bean.FenleiLeft;
+import com.example.sixseconddemo.bean.OrderBean;
+import com.example.sixseconddemo.bean.OrderlistBean;
 import com.example.sixseconddemo.bean.RegBean;
 import com.example.sixseconddemo.bean.SoucangBean;
 import com.example.sixseconddemo.bean.User;
@@ -68,4 +70,10 @@ public interface HomeApi {
     @FormUrlEncoded
     @POST("course_api/addr/del")
     Observable<addressSuccessBean> getdelDress(@FieldMap Map<String,String> map);
+
+    @POST("order/create")
+    @FormUrlEncoded
+    Observable<OrderBean> getOrder(@FieldMap Map<String,Object> map);
+    @GET("order/list")
+    Observable<OrderlistBean> getOrderList(@Query("user_id") String userid, @Query("status") int status, @Query("token") String token);
 }
